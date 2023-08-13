@@ -1,0 +1,2 @@
+export const SESSION_REPOSITORY = Symbol('SESSION_REPOSITORY');
+export const SESSIONS_SERVICE = Symbol('SESSIONS_SERVICE');

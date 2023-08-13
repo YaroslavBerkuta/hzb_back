@@ -1,0 +1,3 @@
+export const GUS_REGION_SERVICE = Symbol('GUS_REGION_SERVICE')
+
+export const GUS_REGION_API_KEY = Symbol('GUS_REGION_API_KEY')
