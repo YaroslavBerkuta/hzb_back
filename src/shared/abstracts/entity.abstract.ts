@@ -5,8 +5,8 @@ export abstract class BaseEntity {
 	id: number
 
 	@CreateDateColumn({ type: 'timestamp', default: () => 'LOCALTIMESTAMP' })
-	createdAt: string
+	createdAt?: string
 
 	@UpdateDateColumn({ type: 'timestamp', default: () => 'LOCALTIMESTAMP' })
-	updatedAt: string
+	updatedAt?: string
 }

@@ -6,6 +6,6 @@ export interface IUser {
 	password: string
 	passwordSalt: string
 
-	createdAt: string
-	updatedAt: string
+	createdAt?: string
+	updatedAt?: string
 }
