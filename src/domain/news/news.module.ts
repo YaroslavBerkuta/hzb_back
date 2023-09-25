@@ -31,7 +31,7 @@ export class NewsModule {
 		return {
 			module: NewsModule,
 			providers: this.getPrividers(),
-			exports: [],
+			exports: [NEWS_REPOSITORY],
 		}
 	}
 }

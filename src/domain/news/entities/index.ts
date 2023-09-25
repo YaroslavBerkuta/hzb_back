@@ -1,4 +1,4 @@
-import { NewsTranslates } from './news-translates.intity'
+import { NewsTranslates } from './news-translates.entity'
 import { News } from './news.intity'
 
 export const NEWS_ETITIES = [News, NewsTranslates]

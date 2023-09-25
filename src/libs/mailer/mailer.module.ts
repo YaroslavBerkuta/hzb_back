@@ -59,7 +59,7 @@ export class MailerModule {
 	static forFeature(): DynamicModule {
 		return {
 			module: MailerModule,
-			providers: [provideClass(MAILER_SERVICE, MailerModule.getService())],
+			providers: [provideClass(MAILER_SERVICE, TelegramMailerService)],
 			imports: MailerModule.getImports(),
 			exports: MailerModule.getExports(),
 		}

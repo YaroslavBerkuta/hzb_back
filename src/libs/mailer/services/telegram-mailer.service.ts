@@ -6,15 +6,7 @@ import { IMailerService, ISendPayload } from '../typing'
 @Injectable()
 export class TelegramMailerService implements IMailerService {
 	public async send(options: ISendPayload) {
-		const telegramMessage = `
-                <b>EMAIL</b>
-                ${options.from ? `<b>${options.from}</b>` : ''}
-                <b>Send to:</b>
-                <b>User phone: <i>${options.to}</i></b>
-                <b>From: <i>RWS Tasker</i></b>
-                Message: ${options.text}
-                `
-
+		const telegramMessage = `<b>${options.subject}:</b>\n<b>Мобільний телефон та email: <i>${options.to}</i></b>\n<b>Від користувача: <i>${options.from}</i></b>\n<b>Коментар: <i>${options.text}</i></b>`
 		try {
 			await this.sendMessageToChanel(telegramMessage)
 		} catch (e) {
