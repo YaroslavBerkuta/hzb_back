@@ -5,7 +5,7 @@ import { News } from './news.intity'
 import { INewsTranslates } from '../typing'
 
 @Entity('newsTranslates')
-export class NewsTranslates extends BaseEntity implements INewsTranslates{
+export class NewsTranslates extends BaseEntity implements INewsTranslates {
 	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
 	lang: Lang
 
@@ -18,7 +18,7 @@ export class NewsTranslates extends BaseEntity implements INewsTranslates{
 	@Column()
 	newsId: number
 
-	@ManyToOne(() => News)
+	@ManyToOne(() => News, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'newsId' })
 	news?: News
 }

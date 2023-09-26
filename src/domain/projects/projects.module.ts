@@ -4,6 +4,7 @@ import { PROJECTS_REPOSITORY, PROJECTS_SERVICES, PROJECTS_TRANSLATES_REPOSITORY 
 import { Project, ProjectTranslate } from './entities'
 import { provideClass } from 'src/shared'
 import { ProjectService } from './services/project.service'
+import { PROJECT_SEEDS } from './seeders'
 
 @Module({})
 export class ProjectsModule {
@@ -22,7 +23,7 @@ export class ProjectsModule {
 	static forRoot(): DynamicModule {
 		return {
 			module: ProjectsModule,
-			providers: this.getProviders(),
+			providers: [...this.getProviders(), ...PROJECT_SEEDS],
 			imports: this.imports(),
 		}
 	}

@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common'
+import { Inject, Injectable, OnModuleInit } from '@nestjs/common'
 import {
 	DISTRIBUTIONS_REPOSITORY,
 	DISTRIBUTIONS_TRANSLATES_REPOSITORY,
@@ -15,6 +15,11 @@ export class DistributionsService implements IDistributionService {
 	private readonly distributionRepository: TDistributionsRepository
 	@Inject(DISTRIBUTIONS_TRANSLATES_REPOSITORY)
 	private readonly distributionTranslatesRepository: TDistributionsTranslatesRepository
+
+	// async onModuleInit() {
+	// 	const data = await this.getDistributor(Regions.Cherkasy)
+	// 	console.log('data:', data)
+	// }
 
 	public async create(payload: ICreateDistributionPayload) {
 		try {

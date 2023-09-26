@@ -18,7 +18,7 @@ export class ClientTranslate extends BaseEntity implements IClientTranslate {
 	@Column()
 	clientId: number
 
-	@ManyToOne(() => Client, cl => cl.translations)
+	@ManyToOne(() => Client, cl => cl.translations, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'clientId' })
 	client?: Client
 }

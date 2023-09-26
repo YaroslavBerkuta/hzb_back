@@ -18,7 +18,7 @@ export class DistributorTranslate extends BaseEntity implements IDistributionsTr
 	@Column()
 	distributorId: number
 
-	@ManyToOne(() => Distributor, d => d.translations)
+	@ManyToOne(() => Distributor, d => d.translations, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'distributorId' })
 	distributor?: Distributor
 }

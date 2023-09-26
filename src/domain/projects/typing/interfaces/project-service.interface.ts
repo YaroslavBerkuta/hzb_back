@@ -12,5 +12,5 @@ export interface ICreateProjectTranslatePayload {
 	lang: Lang
 	name: string
 	description: string
-	projectId: number
+	projectId?: number
 }
