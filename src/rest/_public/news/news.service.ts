@@ -5,7 +5,7 @@ import { NEWS_REPOSITORY, TNewsRepository } from 'src/domain/news/typing'
 import { IPagination, paginateAndGetMany } from 'src/shared'
 
 @Injectable()
-export class PublickNewsService {
+export class PublicNewsService {
 	@Inject(NEWS_REPOSITORY) private readonly newsRepository: TNewsRepository
 	@Inject(GALLERY_SERVICE) private readonly galleryService: IGalleryService
 
@@ -24,9 +24,6 @@ export class PublickNewsService {
 					})) || ''
 			}),
 		)
-
-		console.log({ items, count })
-
 		return {
 			items,
 			count,

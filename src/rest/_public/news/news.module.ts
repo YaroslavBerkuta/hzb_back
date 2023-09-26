@@ -1,16 +1,16 @@
 import { Module, DynamicModule } from '@nestjs/common'
 import { NewsModule } from 'src/domain/news/news.module'
-import { PublickNewsService } from './news.service'
-import { PublickNewsController } from './news.controller'
+import { PublicNewsService } from './news.service'
+import { PublicNewsController } from './news.controller'
 import { GalleryModule } from 'src/domain/galleries/gallery.module'
 
 @Module({})
-export class PublickNewsModule {
+export class PublicNewsModule {
 	static forRoot(): DynamicModule {
 		return {
-			module: PublickNewsModule,
-			controllers: [PublickNewsController],
-			providers: [PublickNewsService],
+			module: PublicNewsModule,
+			controllers: [PublicNewsController],
+			providers: [PublicNewsService],
 			imports: [NewsModule.forFeature(), GalleryModule.forFeature()],
 		}
 	}

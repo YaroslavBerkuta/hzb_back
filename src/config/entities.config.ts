@@ -1,4 +1,5 @@
 import { CLIENTS_ENTITIES } from 'src/domain/clients/entities'
+import { DISTRIBUTIONS_ENTITY } from 'src/domain/distributors/entities'
 import { GALLERIES_ENTITIES } from 'src/domain/galleries/entities'
 import { NEWS_ETITIES } from 'src/domain/news/entities'
 import { PROJECT_ENTITY } from 'src/domain/projects/entities'
@@ -12,4 +13,5 @@ export const ENTITIES = [
 	...NEWS_ETITIES,
 	...GALLERIES_ENTITIES,
 	...PROJECT_ENTITY,
+	...DISTRIBUTIONS_ENTITY,
 ]

@@ -1,4 +1,3 @@
-import { PublickNewsModule } from './_publick/news/news.module'
-import { PublicFormModule } from './_publick/form/form.module'
+import { PublicFormModule, PublicNewsModule } from './_public'
 
-export const REST_MODULES = () => [PublickNewsModule.forRoot(), PublicFormModule.forRoot()]
+export const REST_MODULES = () => [PublicNewsModule.forRoot(), PublicFormModule.forRoot()]
