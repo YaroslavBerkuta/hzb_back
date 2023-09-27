@@ -405,3 +405,7 @@ joy-job
 *.crt 
 **.crt 
 **/**.crt 
+
+hzb
+./hzb/**
+./hzb
