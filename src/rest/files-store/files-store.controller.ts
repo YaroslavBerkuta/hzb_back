@@ -1,7 +1,6 @@
 import { Body, Controller, Delete, Put, Query } from '@nestjs/common'
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { FilesStoreService } from './files-store.service'
-import { ReqUser } from 'src/shared'
 import { AuthGuard } from 'src/domain/sessions/decorators'
 import { FinishFileUpload, RemoveFilesParamsDto, StoreFileDto, StoreFileResDto } from './dto'
 
@@ -19,8 +18,8 @@ export class FilesStoreController {
 	})
 	@AuthGuard()
 	@Put('start-upload-file')
-	public create(@ReqUser() id: number, @Body() dto: StoreFileDto) {
-		return this.fileStoreService.getLinkToUploadFile(id, dto)
+	public create(@Body() dto: StoreFileDto) {
+		return this.fileStoreService.getLinkToUploadFile(dto)
 	}
 
 	@AuthGuard()
@@ -31,7 +30,7 @@ export class FilesStoreController {
 
 	@AuthGuard()
 	@Delete()
-	public async delete(@ReqUser() id: number, @Query() dto: RemoveFilesParamsDto) {
-		return this.fileStoreService.removeFiles(id, dto)
+	public async delete(@Query() dto: RemoveFilesParamsDto) {
+		return this.fileStoreService.removeFiles(dto)
 	}
 }

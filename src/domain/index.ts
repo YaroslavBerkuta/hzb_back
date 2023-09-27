@@ -6,6 +6,7 @@ import { NewsModule } from './news/news.module'
 import { GalleryModule } from './galleries/gallery.module'
 import { DistributorsModule } from './distributors/distributors.module'
 import { ProjectsModule } from './projects/projects.module'
+import { ProductionsModule } from './productions/productions.module'
 
 export const DOMAIN_MODULES = () => [
 	SessionsModule.forRoot(),
@@ -16,4 +17,5 @@ export const DOMAIN_MODULES = () => [
 	DistributorsModule.forRoot(),
 	ProjectsModule.forRoot(),
 	NewsModule.forRoot(),
+	ProductionsModule.forRoot(),
 ]

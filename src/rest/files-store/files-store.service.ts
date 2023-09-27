@@ -2,7 +2,7 @@ import {
 	IGalleryService,
 	IStoreGalleryPayload,
 } from './../../domain/galleries/interface/gallery.interface'
-import { ForbiddenException, Inject, Injectable, NotFoundException } from '@nestjs/common'
+import { Inject, Injectable, NotFoundException } from '@nestjs/common'
 
 import { FinishFileUpload, RemoveFilesParamsDto, StoreFileDto } from './dto'
 
@@ -23,14 +23,10 @@ export class FilesStoreService {
 	constructor(
 		private readonly filesStorageService: FileStorageService,
 		private readonly redisService: RedisService,
-		private readonly filesStoreAccessService: FilesStoreAccessService,
 	) {}
 
-	public async getLinkToUploadFile(userId: number, dto: StoreFileDto) {
+	public async getLinkToUploadFile(dto: StoreFileDto) {
 		try {
-			const canAccess = await this.filesStoreAccessService.checkAccess(userId, dto)
-			if (!canAccess) throw new ForbiddenException('Not have permission to upload this file')
-
 			const { presignedUrl, resultUrl } =
 				await this.filesStorageService.getPresignedUrlForPutObject(
 					dto.directory,
@@ -94,6 +90,10 @@ export class FilesStoreService {
 				payload.parentTable = 'project'
 				break
 			}
+			case 'productions': {
+				payload.parentTable = 'productions'
+				break
+			}
 		}
 
 		if (payload.parentTable) await this.galleryService.store(payload)
@@ -101,14 +101,11 @@ export class FilesStoreService {
 		await this.redisService.del(dto.uploadId)
 	}
 
-	public async removeFiles(userId: number, dto: RemoveFilesParamsDto) {
+	public async removeFiles(dto: RemoveFilesParamsDto) {
 		const items = await this.galleryRepository.find({ id: In(dto.ids) })
 
 		await Promise.all(
 			items.map(async it => {
-				const canDelete = await this.filesStoreAccessService.checkAccessToRemove(userId, it)
-				if (!canDelete) throw new ForbiddenException("Your don't have permission for this")
-
 				await this.galleryService.delete(it.id)
 			}),
 		)
