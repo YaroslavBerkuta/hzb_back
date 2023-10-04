@@ -1,28 +1,28 @@
-import {
-	IGalleryService,
-	IStoreGalleryPayload,
-} from './../../domain/galleries/interface/gallery.interface'
 import { Inject, Injectable, NotFoundException } from '@nestjs/common'
 
 import { FinishFileUpload, RemoveFilesParamsDto, StoreFileDto } from './dto'
 
 import * as randomstring from 'randomstring'
 
-import { FilesStoreAccessService } from './files-store-access.service'
 import { In } from 'typeorm'
 import { GALLERY_REPOSITORY, GALLERY_SERVICE } from 'src/domain/galleries/consts'
-import { IGalleriesRepository } from 'src/domain/galleries/interface'
+import {
+	IGalleriesRepository,
+	IGalleryService,
+	IStoreGalleryPayload,
+} from 'src/domain/galleries/interface'
 import { FileStorageService } from 'src/libs/files-storage'
-import { RedisService } from 'src/libs/redis'
+import { REDIS_SERVICE } from 'src/libs/redis/consts'
+import { IRedisService } from 'src/libs/redis/interfaces'
 
 @Injectable()
 export class FilesStoreService {
 	@Inject(GALLERY_SERVICE) galleryService: IGalleryService
 	@Inject(GALLERY_REPOSITORY) galleryRepository: IGalleriesRepository
+	@Inject(REDIS_SERVICE) private readonly redisService: IRedisService
 
 	constructor(
-		private readonly filesStorageService: FileStorageService,
-		private readonly redisService: RedisService,
+		private readonly filesStorageService: FileStorageService, // private readonly redisService: RedisService,
 	) {}
 
 	public async getLinkToUploadFile(dto: StoreFileDto) {
@@ -50,13 +50,7 @@ export class FilesStoreService {
 				}),
 				60 * 60 * 2,
 			)
-			console.log('file:', {
-				resultUrl,
-				directory: dto.directory,
-				parentId: dto.parentId,
-				name: dto.filename,
-				mimetype: dto.mimetype,
-			})
+
 			return {
 				presignedUrl,
 				uploadId,
@@ -92,6 +86,14 @@ export class FilesStoreService {
 			}
 			case 'productions': {
 				payload.parentTable = 'productions'
+				break
+			}
+			case 'awards': {
+				payload.parentTable = 'awards'
+				break
+			}
+			case 'quality': {
+				payload.parentTable = 'quality'
 				break
 			}
 		}

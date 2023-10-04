@@ -18,7 +18,7 @@ export class ProductionTranslate extends BaseEntity implements IProductionTransl
 	@Column()
 	productionId: number
 
-	@ManyToOne(() => Production, { onDelete: 'CASCADE' })
+	@ManyToOne(() => Production, p => p.translations, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'productionId' })
 	production?: Production
 }

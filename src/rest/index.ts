@@ -1,3 +1,15 @@
-import { PublicFormModule, PublicNewsModule } from './_public'
+import {
+	PublicAwardsModule,
+	PublicFormModule,
+	PublicNewsModule,
+	PublicProjectsModule,
+} from './_public'
+import { FilesStoreModule } from './files-store/files-store.module'
 
-export const REST_MODULES = () => [PublicNewsModule.forRoot(), PublicFormModule.forRoot()]
+export const REST_MODULES = () => [
+	FilesStoreModule.forRoot(),
+	PublicNewsModule.forRoot(),
+	PublicFormModule.forRoot(),
+	PublicAwardsModule.forRoot(),
+	PublicProjectsModule.forRoot(),
+]

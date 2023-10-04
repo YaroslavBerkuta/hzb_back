@@ -5,7 +5,7 @@ module.exports = {
 			script: './dist/main.js',
 			node_args: '-r dotenv/config',
 			watch: true,
-			ignore_watch: ['joy-job', 'node_modules', '.git', '.husky', 'nginx'],
+			ignore_watch: ['hzb', 'node_modules', '.git', '.husky', 'nginx'],
 		},
 	],
 }

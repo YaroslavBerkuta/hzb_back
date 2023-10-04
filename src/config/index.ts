@@ -4,11 +4,11 @@ import { IGoogleModuleOptions } from 'src/libs/google/typing'
 import { IMailerModuleOptions } from 'src/libs/mailer/interfaces'
 import { IRedisModuleOptions } from 'src/libs/redis/interfaces'
 import { getEnv, stringToBoolean } from 'src/shared'
-import { ENTITIES } from './entities.config'
 import fs = require('fs')
 import path = require('path')
+import { ENTITIES } from './entities.config'
 
-export const getDatabaseConfig = (): Parameters<typeof DatabaseModule['forRoot']> => {
+export const getDatabaseConfig = (): Parameters<(typeof DatabaseModule)['forRoot']> => {
 	const sslEnabled = stringToBoolean(getEnv('DATABASE_SSL'))
 	const options: any = {
 		type: 'postgres',

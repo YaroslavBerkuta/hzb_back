@@ -1,7 +1,7 @@
 import { BaseEntity } from 'src/shared'
 import { Lang } from 'src/shared/enums'
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
-import { News } from './news.intity'
+import { News } from './news.entity'
 import { INewsTranslates } from '../typing'
 
 @Entity('newsTranslates')
@@ -18,7 +18,7 @@ export class NewsTranslates extends BaseEntity implements INewsTranslates {
 	@Column()
 	newsId: number
 
-	@ManyToOne(() => News, { onDelete: 'CASCADE' })
+	@ManyToOne(() => News, n => n.translations, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'newsId' })
 	news?: News
 }

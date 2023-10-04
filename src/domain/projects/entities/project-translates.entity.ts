@@ -18,7 +18,7 @@ export class ProjectTranslate extends BaseEntity implements IPojectTranslate {
 	@Column()
 	projectId: number
 
-	@ManyToOne(() => Project, { onDelete: 'CASCADE' })
+	@ManyToOne(() => Project, p => p.translations, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'projectId' })
 	project?: Project
 }

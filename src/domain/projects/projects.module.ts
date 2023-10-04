@@ -31,7 +31,7 @@ export class ProjectsModule {
 		return {
 			module: ProjectsModule,
 			providers: this.getProviders(),
-			exports: [PROJECTS_SERVICES],
+			exports: [PROJECTS_SERVICES, PROJECTS_REPOSITORY],
 			imports: this.imports(),
 		}
 	}
