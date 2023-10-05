@@ -2,9 +2,10 @@ import { BaseEntity } from 'src/shared'
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
 import { Quality } from './quality.entity'
 import { Lang } from 'src/shared/enums'
+import { IQualityTranslate } from '../typing'
 
 @Entity('qualityTranslates')
-export class QualityTranslate extends BaseEntity {
+export class QualityTranslate extends BaseEntity implements IQualityTranslate {
 	@Column({ type: 'varchar', enum: Lang, default: Lang.en })
 	lang: Lang
 
