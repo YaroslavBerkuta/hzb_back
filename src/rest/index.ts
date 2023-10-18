@@ -1,3 +1,4 @@
+import { AdminAccountModule, AdminAuthModule, AdminNewsModule } from './_admin'
 import {
 	PublicAwardsModule,
 	PublicFormModule,
@@ -16,4 +17,8 @@ export const REST_MODULES = () => [
 	PublicProjectsModule.forRoot(),
 	PublicProductionsModule.forRoot(),
 	PublicQualityModule.forRoot(),
+
+	AdminAuthModule.forRoot(),
+	AdminAccountModule.forRoot(),
+	AdminNewsModule.forRoot(),
 ]

@@ -5,6 +5,7 @@ import { SessionsModule } from '../sessions/sessions.module'
 import { User } from './entities'
 import { UsersPasswordsService, UsersService, USERS_SERVICES } from './services'
 import { IUsersModuleOptions } from './typing'
+import { USER_SEEDS } from './seeders/index'
 import {
 	PASSWORD_HASH_SALT,
 	USERS_PASSWORDS_SERVICE,
@@ -37,7 +38,7 @@ export class UsersModule {
 		UsersModule.options = options
 		return {
 			module: UsersModule,
-			providers: [...UsersModule.getProviders()],
+			providers: [...UsersModule.getProviders(), ...USER_SEEDS],
 			imports: UsersModule.imports(),
 		}
 	}

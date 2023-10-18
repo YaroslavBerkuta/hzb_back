@@ -12,7 +12,6 @@ import {
 } from '../typing'
 import { USERS_REPOSITORY } from '../typing/consts'
 import { UsersPasswordsService } from './users-passwords.service'
-import * as randomstring from 'randomstring'
 
 @Injectable()
 export class UsersService implements IUsersService {
@@ -31,7 +30,10 @@ export class UsersService implements IUsersService {
 			passwordSalt,
 		)
 
-		const user = await this.usersRepository.save({})
+		const user = await this.usersRepository.save({
+			...payload,
+			passwordSalt,
+		})
 
 		return user
 	}
@@ -51,19 +53,18 @@ export class UsersService implements IUsersService {
 			.createQueryBuilder('it')
 			.where('it.email = :email', { email: payload.email })
 
-		if (payload.login) {
-			query.andWhere('it.login = :login', { login: payload.login })
+		if (payload.username) {
+			query.andWhere('it.username = :username', { username: payload.username })
 
 			const user = await query.getOne()
 			return Boolean(user)
 		}
 	}
 
-	public async getByUsername(username: string): Promise<IUser> {
+	public async getByEmail(email: string): Promise<IUser> {
 		const user = await this.usersRepository
 			.createQueryBuilder('it')
-			.where('it.email = :email', { email: username })
-			.orWhere('it.login = :login', { login: username })
+			.where('it.email = :email', { email: email })
 			.getOne()
 
 		return user

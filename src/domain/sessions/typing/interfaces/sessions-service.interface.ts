@@ -6,6 +6,7 @@ export interface ISessionsService {
 	refresh(refreshToken: string): Promise<ISession>
 	checkTokenDeprecation(token: string): Promise<boolean>
 	closeAllUserSessions(userId: number, execludeIds?: number[]): Promise<void>
+	getSessionsByTokens(refreshTokens: string[], selectFields?: string[]): Promise<ISession[]>
 }
 
 export interface IStartSessionPayload {

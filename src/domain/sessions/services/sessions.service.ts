@@ -106,4 +106,18 @@ export class SessionsService implements ISessionsService {
 			}),
 		}
 	}
+
+	public async getSessionsByTokens(refreshTokens: string[], selectFields?: string[]) {
+		if (!_.isArray(refreshTokens) || !refreshTokens.length) return []
+
+		const query = this.sessionsRepository
+			.createQueryBuilder('it')
+			.where('it.refreshToken = ANY(:refreshTokens)', { refreshTokens })
+
+		if (!_.isEmpty(selectFields)) {
+			query.select(_.map(selectFields, it => `it.${it}`))
+		}
+
+		return query.getMany()
+	}
 }
