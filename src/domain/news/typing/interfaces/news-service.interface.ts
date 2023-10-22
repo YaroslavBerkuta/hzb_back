@@ -1,7 +1,9 @@
 import { Lang } from 'src/shared/enums'
+import { INews } from './news.interface'
 
 export interface INewsServices {
-	create(payload: ICreateNewsPayload): Promise<void>
+	create(payload: ICreateNewsPayload): Promise<INews>
+	update(id: number, payload: ICreateNewsPayload): Promise<INews>
 }
 
 export interface ICreateNewsTranslatesPayload {

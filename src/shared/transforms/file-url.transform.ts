@@ -16,6 +16,7 @@ export const transformFileUrl = (url: string) => {
 	if (!url) return null
 
 	const originalUrl = `${getEnv('MINIO_URL_PREFIX')}/${url}`
+	console.log('originalUrl:', originalUrl)
 	try {
 		return imgproxy.builder().generateUrl(originalUrl)
 	} catch (e) {

@@ -7,7 +7,7 @@ import {
 	IStoreGalleryPayload,
 } from '../interface'
 import * as _ from 'lodash'
-import { transformFileUrl } from 'src/shared'
+import { transformFileUrl, transformFileUrlWithoutProxy } from 'src/shared'
 
 @Injectable()
 export class GalleryService implements IGalleryService {
@@ -38,7 +38,7 @@ export class GalleryService implements IGalleryService {
 			gallery.map(it => {
 				return {
 					...it,
-					fileUrl: transformFileUrl(it.fileUrl),
+					fileUrl: transformFileUrlWithoutProxy(it.fileUrl),
 				}
 			}),
 			[],

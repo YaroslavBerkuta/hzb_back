@@ -17,6 +17,7 @@ export class NewsService implements INewsServices {
 	public async create(payload: ICreateNewsPayload) {
 		const news = await this.newsRepository.save(payload)
 		await this.putTranslations(news.id, payload.translations, false)
+		return news
 	}
 
 	private async putTranslations(newsId: number, translates: any, clearPrevios = true) {
@@ -30,5 +31,13 @@ export class NewsService implements INewsServices {
 
 		await this.newsTranslateRepository.insert(toSave)
 		return toSave
+	}
+
+	public async update(id: number, payload: ICreateNewsPayload) {
+		const exist = await this.newsRepository.delete(id)
+
+		const news = await this.newsRepository.save(payload)
+		await this.putTranslations(news.id, payload.translations, false)
+		return news
 	}
 }
