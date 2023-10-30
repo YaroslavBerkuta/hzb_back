@@ -14,6 +14,8 @@ export class PublicQualityService {
 			const query = this.qualityRepository
 				.createQueryBuilder('it')
 				.leftJoinAndSelect('it.translations', 'translations')
+				.orderBy('it.createdAt', 'DESC')
+
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 			await Promise.all(
 				items.map(async (it, index, arr: any) => {

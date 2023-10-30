@@ -7,6 +7,7 @@ import {
 } from './typing'
 import { Production, ProductionTranslate } from './entities'
 import { provideClass } from 'src/shared'
+import { ProductionsService } from './services/productions.service'
 
 @Module({})
 export class ProductionsModule {
@@ -14,7 +15,7 @@ export class ProductionsModule {
 		return [
 			provideEntity(PRODUCTIONS_REPOSITORY, Production),
 			provideEntity(PRODUCTIONS_TRANSLATES_REPOSITORY, ProductionTranslate),
-			// provideClass(PRODUCTIONS_SERVICES, null),
+			provideClass(PRODUCTIONS_SERVICES, ProductionsService),
 		]
 	}
 
@@ -35,7 +36,7 @@ export class ProductionsModule {
 			module: ProductionsModule,
 			providers: this.getProviders(),
 			imports: this.imports(),
-			exports: [PRODUCTIONS_REPOSITORY],
+			exports: [PRODUCTIONS_REPOSITORY, PRODUCTIONS_SERVICES],
 		}
 	}
 }

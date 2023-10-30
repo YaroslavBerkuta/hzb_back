@@ -8,7 +8,7 @@ export class StoreFileDto {
 	directory: string
 
 	@DtoProperty()
-	mimetype: string
+	type: string
 
 	@DtoProperty()
 	parentId: string

@@ -46,7 +46,7 @@ export class FilesStoreService {
 					directory: dto.directory,
 					parentId: dto.parentId,
 					name: dto.filename,
-					mimetype: dto.mimetype,
+					mimetype: dto.type,
 				}),
 				60 * 60 * 2,
 			)
@@ -97,7 +97,6 @@ export class FilesStoreService {
 				break
 			}
 		}
-
 		if (payload.parentTable) await this.galleryService.store(payload)
 
 		await this.redisService.del(dto.uploadId)

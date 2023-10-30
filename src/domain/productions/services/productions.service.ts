@@ -16,9 +16,9 @@ export class ProductionsService implements IProductionService {
 
 	public async create(payload: ICreateProductionPayload) {
 		try {
-			const { id } = await this.productionRepository.save(payload)
-			await this.putTranslations(id, payload.translations, false)
-			return
+			const production = await this.productionRepository.save(payload)
+			await this.putTranslations(production.id, payload.translations, false)
+			return production
 		} catch (error) {
 			console.log('error:', error)
 			throw new Error(error)

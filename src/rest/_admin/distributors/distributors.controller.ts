@@ -1,7 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
 import { AdminDistributorsService } from './distributors.service'
 import { IPagination, ReqPagination } from 'src/shared'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('ADMIN | DISTRIBUTORS')
 @Controller('admin/distributors')
 export class AdminDistributorsController {
 	constructor(private readonly distributorService: AdminDistributorsService) {}
