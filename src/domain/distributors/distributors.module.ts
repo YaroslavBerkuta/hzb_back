@@ -36,7 +36,7 @@ export class DistributorsModule {
 			module: DistributorsModule,
 			imports: this.imports(),
 			providers: this.getProviders(),
-			exports: [DISTRIBUTIONS_SERVICES],
+			exports: [DISTRIBUTIONS_SERVICES, DISTRIBUTIONS_REPOSITORY],
 		}
 	}
 }

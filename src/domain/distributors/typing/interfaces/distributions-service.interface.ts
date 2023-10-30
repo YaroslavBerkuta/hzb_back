@@ -9,7 +9,7 @@ export interface IDistributionService {
 
 export interface ICreateDistributionPayload {
 	key: Regions
-	translates: ICreateDistributionTranslatesPayload[]
+	translations: ICreateDistributionTranslatesPayload[]
 }
 
 interface ICreateDistributionTranslatesPayload {

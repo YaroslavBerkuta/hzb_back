@@ -27,7 +27,6 @@ export class FilesStoreService {
 
 	public async getLinkToUploadFile(dto: StoreFileDto) {
 		try {
-			console.log(dto)
 			const { presignedUrl, resultUrl } =
 				await this.filesStorageService.getPresignedUrlForPutObject(
 					dto.directory,

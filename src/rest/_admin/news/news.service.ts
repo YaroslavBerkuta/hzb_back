@@ -19,6 +19,7 @@ export class AdminNewsService {
 		const query = this.newsRepository
 			.createQueryBuilder('it')
 			.leftJoinAndSelect('it.translations', 'translations')
+			.orderBy('it.createdAt', 'DESC')
 
 		const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 

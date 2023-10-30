@@ -16,15 +16,10 @@ export class DistributionsService implements IDistributionService {
 	@Inject(DISTRIBUTIONS_TRANSLATES_REPOSITORY)
 	private readonly distributionTranslatesRepository: TDistributionsTranslatesRepository
 
-	// async onModuleInit() {
-	// 	const data = await this.getDistributor(Regions.Cherkasy)
-	// 	console.log('data:', data)
-	// }
-
 	public async create(payload: ICreateDistributionPayload) {
 		try {
 			const distributor = await this.distributionRepository.save(payload)
-			await this.putTranslations(distributor.id, payload.translates, false)
+			await this.putTranslations(distributor.id, payload.translations, false)
 		} catch (error) {
 			console.log('error:', error)
 			throw new Error(error)
@@ -47,7 +42,7 @@ export class DistributionsService implements IDistributionService {
 
 	private async putTranslations(
 		distributorId: number,
-		translates: ICreateDistributionPayload['translates'],
+		translates: ICreateDistributionPayload['translations'],
 		clearPrevios = true,
 	) {
 		try {

@@ -1,6 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common'
 import { AdminAuthService } from './auth.service'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('ADMIN | AUTH')
 @Controller('admin/auth')
 export class AdminAuthController {
 	constructor(private readonly authService: AdminAuthService) {}

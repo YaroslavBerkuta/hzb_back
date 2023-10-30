@@ -17,6 +17,7 @@ export class AwardsService implements IAwardsService {
 	public async create(payload: ICreateAwardsPayload) {
 		const award = await this.awardsRepository.save(payload)
 		await this.putTranslations(award.id, payload.translations, false)
+		return award
 	}
 
 	private async putTranslations(
@@ -24,16 +25,20 @@ export class AwardsService implements IAwardsService {
 		translates: ICreateAwardsPayload['translations'],
 		clearPrevios = true,
 	) {
-		if (clearPrevios) await this.awardsTranslatesRepository.delete(awadrId)
+		try {
+			if (clearPrevios) await this.awardsTranslatesRepository.delete(awadrId)
 
-		const toSave = translates.map(it => ({
-			lang: it.lang,
-			name: it.name,
-			awadrId,
-			description: it.description,
-		}))
+			const toSave = translates.map(it => ({
+				lang: it.lang,
+				name: it.name,
+				awardId: awadrId,
+				description: it.description,
+			}))
 
-		await this.awardsTranslatesRepository.insert(toSave)
-		return toSave
+			await this.awardsTranslatesRepository.insert(toSave)
+			return toSave
+		} catch (error) {
+			console.log('error:', error)
+		}
 	}
 }

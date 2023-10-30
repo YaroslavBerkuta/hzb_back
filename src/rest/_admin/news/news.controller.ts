@@ -3,7 +3,9 @@ import { RoleGuard } from 'src/domain/sessions/decorators'
 import { UserRole } from 'src/domain/users/typing'
 import { AdminNewsService } from './news.service'
 import { IPagination, ReqPagination } from 'src/shared'
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('ADMIN | NEWS')
 @Controller('admin/news')
 export class AdminNewsController {
 	constructor(private readonly newsService: AdminNewsService) {}
