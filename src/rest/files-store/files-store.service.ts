@@ -96,8 +96,14 @@ export class FilesStoreService {
 				payload.parentTable = 'quality'
 				break
 			}
+			case 'labolatory': {
+				payload.parentTable = 'labolatory'
+				break
+			}
 		}
-		if (payload.parentTable) await this.galleryService.store(payload)
+		if (payload.parentTable) {
+			await this.galleryService.store(payload)
+		}
 
 		await this.redisService.del(dto.uploadId)
 	}

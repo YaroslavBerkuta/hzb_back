@@ -16,9 +16,9 @@ export class QualityService implements IQualityService {
 
 	public async create(payload: ICreateQualityPayload) {
 		try {
-			const { id } = await this.qualityRepository.save(payload)
-			await this.putTranslations(id, payload.translations, false)
-			return
+			const quality = await this.qualityRepository.save(payload)
+			await this.putTranslations(quality.id, payload.translations, false)
+			return quality
 		} catch (error) {
 			console.log('error:', error)
 			throw new Error(error)

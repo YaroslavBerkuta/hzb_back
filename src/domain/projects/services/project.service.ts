@@ -19,6 +19,8 @@ export class ProjectService implements IProjectService {
 		try {
 			const project = await this.projectRepository.save(payload)
 			await this.putTranslations(project.id, payload.translations, false)
+
+			return project
 		} catch (error) {
 			console.log('ProjectService create error:', error)
 			throw new Error('error')

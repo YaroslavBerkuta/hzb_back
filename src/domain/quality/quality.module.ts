@@ -32,7 +32,7 @@ export class QualityModule {
 			module: QualityModule,
 			providers: this.getProviders(),
 			imports: this.imports(),
-			exports: [QUALITY_REPOSITORY],
+			exports: [QUALITY_REPOSITORY, QUALITY_SERVICE],
 		}
 	}
 }

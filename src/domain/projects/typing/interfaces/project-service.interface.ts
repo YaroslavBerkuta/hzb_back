@@ -1,7 +1,8 @@
 import { Lang } from 'src/shared/enums'
+import { IProject } from './project.interface'
 
 export interface IProjectService {
-	create(payload: ICreateProjectPayload): Promise<void>
+	create(payload: ICreateProjectPayload): Promise<IProject>
 }
 
 export interface ICreateProjectPayload {
