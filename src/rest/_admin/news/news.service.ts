@@ -45,4 +45,8 @@ export class AdminNewsService {
 	async delete(id: number) {
 		return await this.newsRepository.delete(id)
 	}
+
+	async update(id: number, dto: any) {
+		return this.newsService.update(id, dto)
+	}
 }

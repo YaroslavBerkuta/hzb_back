@@ -47,4 +47,10 @@ export class AdminAwardsService {
 			await this.awardsRepository.delete(id)
 		} catch (error) {}
 	}
+
+	async update(id: number, dto: any) {
+		try {
+			await this.awardsService.update(id, dto)
+		} catch (error) {}
+	}
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { RoleGuard } from 'src/domain/sessions/decorators'
 import { UserRole } from 'src/domain/users/typing'
 import { AdminNewsService } from './news.service'
@@ -26,5 +26,11 @@ export class AdminNewsController {
 	@Delete(':id')
 	delete(@Param('id') id: number) {
 		return this.newsService.delete(id)
+	}
+
+	@RoleGuard(UserRole.Admin)
+	@Patch(':id')
+	update(@Param('id') id: number, @Body() dto: any) {
+		return this.newsService.update(id, dto)
 	}
 }

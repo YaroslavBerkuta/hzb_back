@@ -34,10 +34,6 @@ export class NewsService implements INewsServices {
 	}
 
 	public async update(id: number, payload: ICreateNewsPayload) {
-		const exist = await this.newsRepository.delete(id)
-
-		const news = await this.newsRepository.save(payload)
-		await this.putTranslations(news.id, payload.translations, false)
-		return news
+		await this.putTranslations(id, payload.translations, true)
 	}
 }

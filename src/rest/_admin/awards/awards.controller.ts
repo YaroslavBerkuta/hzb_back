@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { AdminAwardsService } from './awards.service'
 import { IPagination, ReqPagination } from 'src/shared'
 import { ApiBody, ApiTags } from '@nestjs/swagger'
@@ -25,5 +25,10 @@ export class AdminAwardsController {
 	@Delete(':id')
 	delete(@Param('id') id: number) {
 		return this.awardsService.delete(id)
+	}
+
+	@Patch(':id')
+	update(@Param('id') id: number, @Body() dto: any) {
+		return this.awardsService.update(id, dto)
 	}
 }

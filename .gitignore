@@ -409,3 +409,5 @@ joy-job
 hzb
 ./hzb/**
 ./hzb
+.env
+/.env

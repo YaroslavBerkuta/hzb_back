@@ -41,4 +41,8 @@ export class AwardsService implements IAwardsService {
 			console.log('error:', error)
 		}
 	}
+
+	public async update(id: number, payload: ICreateAwardsPayload) {
+		await this.putTranslations(id, payload.translations, false)
+	}
 }
