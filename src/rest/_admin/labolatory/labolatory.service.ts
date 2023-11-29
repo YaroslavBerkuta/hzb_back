@@ -45,4 +45,8 @@ export class AdminLabolatoryService {
 	async remove(id: number) {
 		return this.labolatoryRepository.delete(id)
 	}
+
+	async update(id: number, dto: any) {
+		return this.labolatortService.update(id, dto)
+	}
 }

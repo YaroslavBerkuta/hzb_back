@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { AdminQualityService } from './quality.service'
 import { IPagination, ReqPagination } from 'src/shared'
 
@@ -19,5 +19,10 @@ export class AdminQualityController {
 	@Delete(':id')
 	remove(@Param('id') id: number) {
 		return this.qualityService.remove(id)
+	}
+
+	@Patch(':id')
+	update(@Param('id') id: number, @Body() dto: any) {
+		return this.qualityService.update(id, dto)
 	}
 }

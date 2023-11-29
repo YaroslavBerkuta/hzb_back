@@ -38,11 +38,15 @@ export class AdminQualityService {
 		}
 	}
 
-    async create(dto: any) {
+	async create(dto: any) {
 		return await this.qualityService.create(dto)
 	}
 
-    async remove(id: number) {
+	async remove(id: number) {
 		return this.qualityRepository.delete(id)
+	}
+
+	async update(id: number, dto: any) {
+		return this.qualityService.update(id, dto)
 	}
 }

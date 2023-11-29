@@ -46,4 +46,13 @@ export class LabolatoryService implements ILabolatoryService {
 			throw new Error(error)
 		}
 	}
+
+	public async update(id: number, payload: ICreateLabolatoryPayload) {
+		try {
+			await this.putTranslations(id, payload.translations, true)
+		} catch (error) {
+			console.log('error:', error)
+			throw new Error(error)
+		}
+	}
 }

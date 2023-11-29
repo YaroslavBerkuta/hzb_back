@@ -61,4 +61,12 @@ export class DistributionsService implements IDistributionService {
 			throw new Error(error)
 		}
 	}
+
+	public async update(id: number, payload: ICreateDistributionPayload) {
+		try {
+			await this.putTranslations(id, payload.translations, true)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 }

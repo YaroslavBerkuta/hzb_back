@@ -48,4 +48,13 @@ export class ProjectService implements IProjectService {
 			throw new Error('error')
 		}
 	}
+
+	public async update(id: number, payload: ICreateProjectPayload) {
+		try {
+			await this.putTranslations(id, payload.translations, true)
+		} catch (error) {
+			console.log('project error:', error)
+			throw new Error('error')
+		}
+	}
 }

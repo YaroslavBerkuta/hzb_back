@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { AdminProductionsService } from './productions.service'
 import { IPagination, ReqPagination } from 'src/shared'
 import { ApiTags } from '@nestjs/swagger'
@@ -21,5 +21,10 @@ export class AdminProductionsController {
 	@Delete(':id')
 	remove(@Param('id') id: number) {
 		return this.productionService.delete(id)
+	}
+
+	@Patch(':id')
+	update(@Param('id') id: number, @Body() dto: any) {
+		return this.productionService.update(id, dto)
 	}
 }

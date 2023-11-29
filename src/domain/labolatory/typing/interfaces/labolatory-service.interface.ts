@@ -3,6 +3,7 @@ import { ILabolatory } from './labolatory.interface'
 
 export interface ILabolatoryService {
 	create(payload: ICreateLabolatoryPayload): Promise<ILabolatory>
+	update(id: number, payload: ICreateLabolatoryPayload): Promise<void>
 }
 
 export interface ICreateLabolatoryPayload {

@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { AdminProjectsService } from './project.service'
 import { IPagination, ReqPagination } from 'src/shared'
 import { ApiTags } from '@nestjs/swagger'
 
-@ApiTags("ADMIN | PROJECTS")
+@ApiTags('ADMIN | PROJECTS')
 @Controller('admin/projects')
 export class AdminProjectsController {
 	constructor(private readonly projectsService: AdminProjectsService) {}
@@ -21,5 +21,10 @@ export class AdminProjectsController {
 	@Delete(':id')
 	remove(@Param('id') id: number) {
 		return this.projectsService.remove(id)
+	}
+
+	@Patch(':id')
+	update(@Param('id') id: number, @Body() dto: any) {
+		return this.projectsService.update(id, dto)
 	}
 }

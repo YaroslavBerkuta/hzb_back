@@ -44,4 +44,8 @@ export class AdminProductionsService {
 	async delete(id: number) {
 		return await this.productionRepository.delete(id)
 	}
+
+	async update(id: number, dto: any) {
+		return this.productionService.update(id, dto)
+	}
 }

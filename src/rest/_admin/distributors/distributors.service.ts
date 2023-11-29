@@ -34,4 +34,8 @@ export class AdminDistributorsService {
 	async remove(id: number) {
 		return this.distributorRepository.delete(id)
 	}
+
+	async update(id: number, dto: any) {
+		return this.distributorService.update(id, dto)
+	}
 }

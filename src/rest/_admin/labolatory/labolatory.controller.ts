@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { AdminLabolatoryService } from './labolatory.service'
 import { IPagination, ReqPagination } from 'src/shared'
 
@@ -11,7 +11,7 @@ export class AdminLabolatoryController {
 		return this.labolatoryService.getList(pagination)
 	}
 
-    @Post()
+	@Post()
 	create(@Body() dto: any) {
 		return this.labolatoryService.create(dto)
 	}
@@ -19,5 +19,10 @@ export class AdminLabolatoryController {
 	@Delete(':id')
 	remove(@Param('id') id: number) {
 		return this.labolatoryService.remove(id)
+	}
+
+	@Patch(':id')
+	update(@Param('id') id: number, @Body() dto: any) {
+		return this.labolatoryService.update(id, dto)
 	}
 }

@@ -46,4 +46,13 @@ export class QualityService implements IQualityService {
 			throw new Error(error)
 		}
 	}
+
+	public async update(id: number, payload: ICreateQualityPayload) {
+		try {
+			await this.putTranslations(id, payload.translations, true)
+		} catch (error) {
+			console.log('error:', error)
+			throw new Error(error)
+		}
+	}
 }

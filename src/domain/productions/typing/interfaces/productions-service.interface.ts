@@ -3,6 +3,7 @@ import { IProduction } from './productions.interface'
 
 export interface IProductionService {
 	create(payload: ICreateProductionPayload): Promise<IProduction>
+	update(id: number, payload: ICreateProductionPayload): Promise<void>
 }
 
 export interface ICreateProductionPayload {

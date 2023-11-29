@@ -3,6 +3,7 @@ import { IProject } from './project.interface'
 
 export interface IProjectService {
 	create(payload: ICreateProjectPayload): Promise<IProject>
+	update(id: number, payload: ICreateProjectPayload): Promise<void>
 }
 
 export interface ICreateProjectPayload {

@@ -3,6 +3,7 @@ import { IQuality } from './quality.interface'
 
 export interface IQualityService {
 	create(payload: ICreateQualityPayload): Promise<IQuality>
+	update(id: number, payload: ICreateQualityPayload): Promise<void>
 }
 
 export interface ICreateQualityPayload {

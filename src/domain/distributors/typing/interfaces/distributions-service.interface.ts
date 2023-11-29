@@ -5,6 +5,7 @@ import { IDistributions } from './distributions.interface'
 export interface IDistributionService {
 	create(payload: ICreateDistributionPayload): Promise<void>
 	getDistributor(key: Regions): Promise<IDistributions>
+	update(id: number, payload: ICreateDistributionPayload): Promise<void>
 }
 
 export interface ICreateDistributionPayload {

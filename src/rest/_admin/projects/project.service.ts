@@ -45,4 +45,8 @@ export class AdminProjectsService {
 	async remove(id: number) {
 		return this.projectsRepository.delete(id)
 	}
+
+	async update(id: number, dto: any) {
+		return this.projectsService.update(id, dto)
+	}
 }
