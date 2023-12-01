@@ -5,6 +5,7 @@ import {
 	AdminDistributorsModule,
 	AdminLabolatoryModule,
 	AdminNewsModule,
+	AdminPartnerModule,
 	AdminProjectsModule,
 	AdminQualityModule,
 } from './_admin'
@@ -41,4 +42,5 @@ export const REST_MODULES = () => [
 	AdminProjectsModule.forRoot(),
 	AdminQualityModule.forRoot(),
 	AdminLabolatoryModule.forRoot(),
+	AdminPartnerModule.forRoot(),
 ]

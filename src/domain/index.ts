@@ -10,6 +10,7 @@ import { ProductionsModule } from './productions/productions.module'
 import { AwardsModule } from './awards/awards.module'
 import { QualityModule } from './quality/quality.module'
 import { LabolatoryModule } from './labolatory/labolatory.module'
+import { PartnerModule } from './partner/partner.module'
 
 export const DOMAIN_MODULES = () => [
 	SessionsModule.forRoot(),
@@ -24,4 +25,5 @@ export const DOMAIN_MODULES = () => [
 	AwardsModule.forRoot(),
 	QualityModule.forRoot(),
 	LabolatoryModule.forRoot(),
+	PartnerModule.forRoot(),
 ]

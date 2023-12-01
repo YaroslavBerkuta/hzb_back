@@ -100,6 +100,10 @@ export class FilesStoreService {
 				payload.parentTable = 'labolatory'
 				break
 			}
+			case 'partner': {
+				payload.parentTable = 'partner'
+				break
+			}
 		}
 		if (payload.parentTable) {
 			await this.galleryService.store(payload)
@@ -109,7 +113,9 @@ export class FilesStoreService {
 	}
 
 	public async removeFiles(dto: RemoveFilesParamsDto) {
-		const items = await this.galleryRepository.find({ id: In(dto.ids) })
+		const ids = Object.values(dto)
+		console.log('ids:', ids)
+		const items = await this.galleryRepository.find({ id: In(ids) })
 
 		await Promise.all(
 			items.map(async it => {
