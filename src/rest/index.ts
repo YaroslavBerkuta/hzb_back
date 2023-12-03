@@ -15,6 +15,7 @@ import {
 	PublicFormModule,
 	PublicLabolatoryModule,
 	PublicNewsModule,
+	PublicPartnerModule,
 	PublicProductionsModule,
 	PublicProjectsModule,
 	PublicQualityModule,
@@ -32,6 +33,7 @@ export const REST_MODULES = () => [
 	PublicQualityModule.forRoot(),
 	PublicDistributorsModule.forRoot(),
 	PublicLabolatoryModule.forRoot(),
+	PublicPartnerModule.forRoot(),
 
 	AdminAuthModule.forRoot(),
 	AdminAccountModule.forRoot(),

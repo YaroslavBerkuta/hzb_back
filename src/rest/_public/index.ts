@@ -6,3 +6,4 @@ export * from './productions/productions.module'
 export * from './quality/quality.module'
 export * from './distributors/distributors.module'
 export * from "./labolatory/labolatory.module"
+export * from "./partners/partners.module"

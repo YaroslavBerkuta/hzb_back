@@ -407,6 +407,7 @@ joy-job
 **/**.crt 
 
 hzb
+hzb/*
 ./hzb/**
 ./hzb
 .env
