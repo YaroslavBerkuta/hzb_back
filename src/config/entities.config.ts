@@ -1,4 +1,5 @@
 import { AWARDS_ENTITY } from 'src/domain/awards/entities'
+import { CATEGORY_ENTITIES } from 'src/domain/categories/entities'
 import { CLIENTS_ENTITIES } from 'src/domain/clients/entities'
 import { DISTRIBUTIONS_ENTITY } from 'src/domain/distributors/entities'
 import { GALLERIES_ENTITIES } from 'src/domain/galleries/entities'
@@ -6,6 +7,7 @@ import { LABOLATORY_ENTITIES } from 'src/domain/labolatory/entities'
 import { NEWS_ETITIES } from 'src/domain/news/entities'
 import { PARTNER_ENTITY } from 'src/domain/partner/entities'
 import { PRODUCTIONS_ENTITY } from 'src/domain/productions/entities'
+import { PRODUCTS_ENTITY } from 'src/domain/products/entities'
 import { PROJECT_ENTITY } from 'src/domain/projects/entities'
 import { QUALITY_ENTITIES } from 'src/domain/quality/entities'
 import { SESSIONS_ENTITIES } from 'src/domain/sessions/entities'
@@ -23,5 +25,7 @@ export const ENTITIES = [
 	...AWARDS_ENTITY,
 	...QUALITY_ENTITIES,
 	...LABOLATORY_ENTITIES,
-	...PARTNER_ENTITY
+	...PARTNER_ENTITY,
+	...CATEGORY_ENTITIES,
+	...PRODUCTS_ENTITY,
 ]
