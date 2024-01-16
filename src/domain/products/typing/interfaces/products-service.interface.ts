@@ -11,7 +11,8 @@ export interface ICreateProductPayload {
 	translations?: {
 		lang: Lang
 		name: string
-		description: string
-		info: string
+		description?: string
+		info?: string
+		previewHtml?: string
 	}[]
 }

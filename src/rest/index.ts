@@ -18,11 +18,13 @@ import {
 	PublicNewsModule,
 	PublicPartnerModule,
 	PublicProductionsModule,
+	PublicProductsModule,
 	PublicProjectsModule,
 	PublicQualityModule,
 } from './_public'
 import { FilesStoreModule } from './files-store/files-store.module'
 import { AdminProductionsModule } from './_admin/productions/productions.module'
+import { AdminProductsModule } from './_admin/products/products.module'
 
 export const REST_MODULES = () => [
 	FilesStoreModule.forRoot(),
@@ -36,6 +38,7 @@ export const REST_MODULES = () => [
 	PublicLabolatoryModule.forRoot(),
 	PublicPartnerModule.forRoot(),
 	PublicCategoriesModule.forRoot(),
+	PublicProductsModule.forRoot(),
 
 	AdminAuthModule.forRoot(),
 	AdminAccountModule.forRoot(),
@@ -47,4 +50,5 @@ export const REST_MODULES = () => [
 	AdminQualityModule.forRoot(),
 	AdminLabolatoryModule.forRoot(),
 	AdminPartnerModule.forRoot(),
+	AdminProductsModule.forRoot(),
 ]

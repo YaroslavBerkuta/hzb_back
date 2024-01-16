@@ -104,6 +104,14 @@ export class FilesStoreService {
 				payload.parentTable = 'partner'
 				break
 			}
+			case 'products': {
+				payload.parentTable = 'products'
+				break
+			}
+			case 'productsTable': {
+				payload.parentTable = 'productsTable'
+				break
+			}
 		}
 		if (payload.parentTable) {
 			await this.galleryService.store(payload)

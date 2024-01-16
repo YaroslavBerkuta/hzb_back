@@ -12,8 +12,9 @@ export interface IProduct {
 export interface IProductTranslate {
 	id: number
 	name: string
-	description: string
-	info: string
+	description?: string
+	info?: string
+	previewHtml?: string
 	productId: number
 	product?: IProduct
 	createdAt?: string

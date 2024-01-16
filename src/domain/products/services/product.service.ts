@@ -57,6 +57,7 @@ export class ProductService implements IProductService {
 				name: it.name,
 				info: it.info,
 				description: it.description,
+				previewHtml: it.previewHtml,
 				productId,
 			}))
 
