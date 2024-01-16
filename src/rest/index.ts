@@ -11,6 +11,7 @@ import {
 } from './_admin'
 import {
 	PublicAwardsModule,
+	PublicCategoriesModule,
 	PublicDistributorsModule,
 	PublicFormModule,
 	PublicLabolatoryModule,
@@ -34,6 +35,7 @@ export const REST_MODULES = () => [
 	PublicDistributorsModule.forRoot(),
 	PublicLabolatoryModule.forRoot(),
 	PublicPartnerModule.forRoot(),
+	PublicCategoriesModule.forRoot(),
 
 	AdminAuthModule.forRoot(),
 	AdminAccountModule.forRoot(),
