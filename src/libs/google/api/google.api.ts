@@ -61,7 +61,7 @@ export class GoogleApi implements OnModuleInit, IGoogleApi {
 			params: {
 				place_id: placeId,
 				key: this.options.apiKey,
-				language: (lang === Lang.uk ? 'uk' : lang) as any,
+				language: (lang === Lang.ua ? 'uk' : lang) as any,
 			},
 		})
 

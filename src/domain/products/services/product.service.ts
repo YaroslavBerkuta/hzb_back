@@ -22,13 +22,11 @@ export class ProductService implements IProductService {
 	public async create(payload: ICreateProductPayload) {
 		try {
 			const product = await this.productRepository.save(payload)
-			if (payload.categoryId.length > 0) {
-				for await (let id of payload.categoryId) {
-					await this.productToCategory.save({
-						categoryId: id,
-						productId: product.id,
-					})
-				}
+			if (payload.categoryId) {
+				await this.productToCategory.save({
+					categoryId: payload.categoryId,
+					productId: product.id,
+				})
 			}
 			await this.putTranslations(product.id, payload.translations, false)
 			return product
@@ -40,6 +38,14 @@ export class ProductService implements IProductService {
 	public async update(id: number, payload: Partial<ICreateProductPayload>) {
 		try {
 			await this.putTranslations(id, payload.translations, true)
+
+			if (payload.categoryId) {
+				await this.productToCategory.delete({ productId: id })
+				await this.productToCategory.save({
+					categoryId: payload.categoryId,
+					productId: id,
+				})
+			}
 		} catch (error) {
 			console.log('error:', error)
 		}

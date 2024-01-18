@@ -12,11 +12,11 @@ export class ProductToCategoty extends BaseEntity implements IProductCategory {
 	@Column()
 	productId: number
 
-	@ManyToOne(() => Product, p => p.productCategory)
+	@ManyToOne(() => Product, p => p.productCategory, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'productId' })
 	product?: Product
 
-	@ManyToOne(() => Category, c => c.productCategory)
+	@ManyToOne(() => Category, c => c.productCategory, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'categoryId' })
 	category?: Category
 }

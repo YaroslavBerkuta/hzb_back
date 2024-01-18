@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Controller, Get, Param, Query } from '@nestjs/common'
 import { PublicProductsService } from './products.service'
 import { IPagination, ReqPagination } from 'src/shared'
 
@@ -7,8 +7,8 @@ export class PublicProductsController {
 	constructor(private readonly productsService: PublicProductsService) {}
 
 	@Get('list')
-	getList(@ReqPagination() pagination: IPagination) {
-		return this.productsService.getList(pagination)
+	getList(@ReqPagination() pagination: IPagination, @Query() dto: any) {
+		return this.productsService.getList(pagination, dto)
 	}
 
 	@Get(':id')

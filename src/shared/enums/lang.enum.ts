@@ -1,6 +1,6 @@
 export enum Lang {
 	en = 'en',
-	uk = 'uk',
+	ua = 'ua',
 }
 
-export const LangArray: Lang[] = [Lang.en, Lang.uk]
+export const LangArray: Lang[] = [Lang.en, Lang.ua]

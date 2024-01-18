@@ -6,7 +6,7 @@ import { ICategoryTranslate } from '../typing'
 
 @Entity('categoriesTranslates')
 export class CategoryTranslate extends BaseEntity implements ICategoryTranslate {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()

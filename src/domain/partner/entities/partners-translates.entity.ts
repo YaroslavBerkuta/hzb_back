@@ -6,7 +6,7 @@ import { IPartnerTranslate } from '../types'
 
 @Entity('partnersTranslates')
 export class PartnerTranslate extends BaseEntity implements IPartnerTranslate {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()

@@ -10,7 +10,7 @@ export const CategoryData = [
 				description: '',
 			},
 			{
-				lang: Lang.uk,
+				lang: Lang.ua,
 				name: 'Залізобетонні вироби',
 				description: '',
 			},
@@ -25,7 +25,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Плити перекриття',
 						description: '',
 					},
@@ -40,7 +40,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Прогони',
 						description: '',
 					},
@@ -55,7 +55,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Плити / балки лоджій та балконів',
 						description: '',
 					},
@@ -70,7 +70,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Перемички',
 						description: '',
 					},
@@ -85,7 +85,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Сходові системи',
 						description: '',
 					},
@@ -100,7 +100,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Інженерні мережі',
 						description: '',
 					},
@@ -115,7 +115,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Плити стрічкових фундаментів',
 						description: '',
 					},
@@ -130,7 +130,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Елементи огорожі',
 						description: '',
 					},
@@ -145,7 +145,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Опорні плити',
 						description: '',
 					},
@@ -160,7 +160,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Палі забивні',
 						description: '',
 					},
@@ -175,7 +175,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Вироби для доріг',
 						description: '',
 					},
@@ -190,7 +190,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Садові елементи',
 						description: '',
 					},
@@ -205,7 +205,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Бетонні блоки',
 						description: '',
 					},
@@ -222,7 +222,7 @@ export const CategoryData = [
 				description: '',
 			},
 			{
-				lang: Lang.uk,
+				lang: Lang.ua,
 				name: 'Бетони та розчини',
 				description: '',
 			},
@@ -237,7 +237,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Товарні бетони',
 						description: '',
 					},
@@ -252,7 +252,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Розчини цементно-вапняні',
 						description: '',
 					},
@@ -267,7 +267,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Розчини цементні',
 						description: '',
 					},
@@ -284,7 +284,7 @@ export const CategoryData = [
 				description: '',
 			},
 			{
-				lang: Lang.uk,
+				lang: Lang.ua,
 				name: 'Столярні вироби',
 				description: '',
 			},
@@ -299,7 +299,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Пиломатеріали',
 						description: '',
 					},
@@ -314,7 +314,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Віконні блоки',
 						description: '',
 					},
@@ -329,7 +329,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Дверні коробки',
 						description: '',
 					},
@@ -344,7 +344,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Стругане покриття',
 						description: '',
 					},
@@ -359,7 +359,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Дверні полотна глухі',
 						description: '',
 					},
@@ -374,7 +374,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Додаткові послуги до дверей',
 						description: '',
 					},
@@ -389,7 +389,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Струганий погонаж',
 						description: '',
 					},
@@ -404,7 +404,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Дверні полотна під скло',
 						description: '',
 					},
@@ -419,7 +419,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Додаткові послуги до дверної коробки',
 						description: '',
 					},
@@ -434,7 +434,7 @@ export const CategoryData = [
 						description: '',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Столярні послуги',
 						description: '',
 					},
@@ -451,7 +451,7 @@ export const CategoryData = [
 				description: '',
 			},
 			{
-				lang: Lang.uk,
+				lang: Lang.ua,
 				name: '3D Моделі',
 				description: '',
 			},

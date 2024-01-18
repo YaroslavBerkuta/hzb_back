@@ -6,7 +6,7 @@ import { INewsTranslates } from '../typing'
 
 @Entity('newsTranslates')
 export class NewsTranslates extends BaseEntity implements INewsTranslates {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()

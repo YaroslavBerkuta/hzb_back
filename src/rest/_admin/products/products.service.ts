@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
+import { CATEGORY_REPOSITORY, TCategory } from 'src/domain/categories/typing'
 import { GALLERY_SERVICE } from 'src/domain/galleries/consts'
 import { IGalleryService } from 'src/domain/galleries/interface'
 import { TProductionRepository } from 'src/domain/productions/typing'
@@ -11,6 +12,7 @@ export class AdminProductsService {
 	@Inject(PRODUCTS_SERVICE) private readonly productService: IProductService
 	@Inject(PRODUCTS_REPOSITORY) private readonly productRepository: TProductionRepository
 	@Inject(GALLERY_SERVICE) private readonly galleryService: IGalleryService
+	@Inject(CATEGORY_REPOSITORY) private readonly categoriesRepository: TCategory
 
 	async create(dto: any) {
 		try {
@@ -47,6 +49,16 @@ export class AdminProductsService {
 				}),
 			)
 
+			await Promise.all(
+				items.map(async (it, index, arr: any) => {
+					arr[index].table =
+						(await this.galleryService.get({
+							parentId: it.id,
+							parentTable: 'productsTable',
+						})) || ''
+				}),
+			)
+
 			return {
 				items,
 				count,
@@ -58,5 +70,17 @@ export class AdminProductsService {
 
 	async remove(id: number) {
 		return this.productRepository.delete(id)
+	}
+
+	async getCategories() {
+		try {
+			const data = await this.categoriesRepository
+				.createQueryBuilder('it')
+				.leftJoinAndSelect('it.translations', 'translations')
+				.getMany()
+			return data
+		} catch (error) {
+			console.log(error)
+		}
 	}
 }

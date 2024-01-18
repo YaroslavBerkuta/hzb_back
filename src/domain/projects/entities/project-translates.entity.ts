@@ -6,7 +6,7 @@ import { IPojectTranslate } from '../typing'
 
 @Entity('projectTranslates')
 export class ProjectTranslate extends BaseEntity implements IPojectTranslate {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()

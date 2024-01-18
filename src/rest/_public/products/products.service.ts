@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common'
+import { ForbiddenException, Inject, Injectable } from '@nestjs/common'
+import { CATEGORY_REPOSITORY, TCategory } from 'src/domain/categories/typing'
 import { GALLERY_SERVICE } from 'src/domain/galleries/consts'
 import { IGalleryService } from 'src/domain/galleries/interface'
 import { TProductionRepository } from 'src/domain/productions/typing'
@@ -9,12 +10,28 @@ import { IPagination, paginateAndGetMany } from 'src/shared'
 export class PublicProductsService {
 	@Inject(PRODUCTS_REPOSITORY) private readonly productRepository: TProductionRepository
 	@Inject(GALLERY_SERVICE) private readonly galleryService: IGalleryService
+	@Inject(CATEGORY_REPOSITORY) private readonly categoryRepository: TCategory
 
-	async getList(pagination: IPagination) {
+	async getList(pagination: IPagination, dto: any) {
 		try {
 			const query = this.productRepository
 				.createQueryBuilder('it')
 				.leftJoinAndSelect('it.translations', 'translations')
+				.leftJoinAndSelect('it.productCategory', 'productCategory')
+				.leftJoinAndSelect('productCategory.category', 'category')
+
+			if (dto.params.categoryKey) {
+				const category = await this.categoryRepository.findOne({
+					where: { key: dto.params.categoryKey },
+				})
+				query
+					.andWhere('productCategory.categoryId = :categoryId', {
+						categoryId: category.id,
+					})
+					.orWhere('category.parentId = :categoryId', {
+						categoryId: category.id,
+					})
+			}
 
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 

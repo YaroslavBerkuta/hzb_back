@@ -6,6 +6,11 @@ import { IPagination, ReqPagination } from 'src/shared'
 export class AdminProductsController {
 	constructor(private readonly productsService: AdminProductsService) {}
 
+	@Get('categories')
+	getCategories() {
+		return this.productsService.getCategories()
+	}
+
 	@Get('list')
 	getList(@ReqPagination() pagination: IPagination) {
 		return this.productsService.getList(pagination)

@@ -6,7 +6,7 @@ import { IClientTranslate } from '../typing'
 
 @Entity('clientsTranslates')
 export class ClientTranslate extends BaseEntity implements IClientTranslate {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()

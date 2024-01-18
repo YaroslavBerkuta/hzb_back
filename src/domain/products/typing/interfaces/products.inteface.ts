@@ -1,4 +1,5 @@
 import { ICategory } from 'src/domain/categories/typing'
+import { Lang } from 'src/shared/enums'
 import { Repository } from 'typeorm'
 
 export interface IProduct {
@@ -16,6 +17,7 @@ export interface IProductTranslate {
 	info?: string
 	previewHtml?: string
 	productId: number
+	lang: Lang
 	product?: IProduct
 	createdAt?: string
 	updatedAt?: string

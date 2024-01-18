@@ -6,7 +6,7 @@ import { IProductionTranslate } from '../typing'
 
 @Entity('productionsTranslates')
 export class ProductionTranslate extends BaseEntity implements IProductionTranslate {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()

@@ -7,7 +7,7 @@ export interface IProductService {
 }
 
 export interface ICreateProductPayload {
-	categoryId: number[]
+	categoryId: number
 	translations?: {
 		lang: Lang
 		name: string

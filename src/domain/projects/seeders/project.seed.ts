@@ -18,7 +18,7 @@ export class ProjectSeed extends Seeder {
 						description: 'Project 1 descriprion',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Проект 1',
 						description: 'Проект 1 опис',
 					},
@@ -32,7 +32,7 @@ export class ProjectSeed extends Seeder {
 						description: 'Project 2 descriprion',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Проект 2',
 						description: 'Проект 2 опис',
 					},
@@ -46,7 +46,7 @@ export class ProjectSeed extends Seeder {
 						description: 'Project 3 descriprion',
 					},
 					{
-						lang: Lang.uk,
+						lang: Lang.ua,
 						name: 'Проект 3',
 						description: 'Проект 3 опис',
 					},

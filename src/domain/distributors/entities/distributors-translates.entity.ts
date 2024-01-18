@@ -6,7 +6,7 @@ import { IDistributionsTranslates } from '../typing/interfaces'
 
 @Entity('distributorsTranslates')
 export class DistributorTranslate extends BaseEntity implements IDistributionsTranslates {
-	@Column({ type: 'varchar', enum: Lang, default: Lang.uk })
+	@Column({ type: 'varchar', enum: Lang, default: Lang.ua })
 	lang: Lang
 
 	@Column()
