@@ -13,6 +13,7 @@ export class PublicProductsService {
 	@Inject(CATEGORY_REPOSITORY) private readonly categoryRepository: TCategory
 
 	async getList(pagination: IPagination, dto: any) {
+		console.log('IPagination:', pagination)
 		try {
 			const query = this.productRepository
 				.createQueryBuilder('it')
@@ -20,9 +21,9 @@ export class PublicProductsService {
 				.leftJoinAndSelect('it.productCategory', 'productCategory')
 				.leftJoinAndSelect('productCategory.category', 'category')
 
-			if (dto.params.categoryKey) {
+			if (dto.categoryKey) {
 				const category = await this.categoryRepository.findOne({
-					where: { key: dto.params.categoryKey },
+					where: { key: dto.categoryKey },
 				})
 				query
 					.andWhere('productCategory.categoryId = :categoryId', {
