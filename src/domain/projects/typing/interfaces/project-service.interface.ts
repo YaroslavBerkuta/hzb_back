@@ -7,12 +7,14 @@ export interface IProjectService {
 }
 
 export interface ICreateProjectPayload {
+	years: string
 	translations?: ICreateProjectTranslatePayload[]
 }
 
 export interface ICreateProjectTranslatePayload {
 	lang: Lang
 	name: string
-	description: string
+	sity: string
 	projectId?: number
+	info?: any[]
 }

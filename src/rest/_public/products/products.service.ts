@@ -15,24 +15,21 @@ export class PublicProductsService {
 	async getList(pagination: IPagination, dto: any) {
 		console.log('IPagination:', pagination)
 		try {
+			const category = await this.categoryRepository.findOne({
+				where: { key: dto.categoryKey },
+			})
+
 			const query = this.productRepository
 				.createQueryBuilder('it')
 				.leftJoinAndSelect('it.translations', 'translations')
 				.leftJoinAndSelect('it.productCategory', 'productCategory')
 				.leftJoinAndSelect('productCategory.category', 'category')
-
-			if (dto.categoryKey) {
-				const category = await this.categoryRepository.findOne({
-					where: { key: dto.categoryKey },
+				.andWhere('productCategory.categoryId = :categoryId', {
+					categoryId: category.id,
 				})
-				query
-					.andWhere('productCategory.categoryId = :categoryId', {
-						categoryId: category.id,
-					})
-					.orWhere('category.parentId = :categoryId', {
-						categoryId: category.id,
-					})
-			}
+				.orWhere('category.parentId = :categoryId', {
+					categoryId: category.id,
+				})
 
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 

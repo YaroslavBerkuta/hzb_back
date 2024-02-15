@@ -3,17 +3,22 @@ import {
 	ICreateProjectPayload,
 	ICreateProjectTranslatePayload,
 	IProjectService,
+	PROJECTS_DETAILS_REPOSITORY,
 	PROJECTS_REPOSITORY,
 	PROJECTS_TRANSLATES_REPOSITORY,
+	TProjectDetailRepository,
 	TProjectRepository,
 	TProjectTranslateRepository,
 } from '../typing'
+import _, { find } from 'lodash'
 
 @Injectable()
 export class ProjectService implements IProjectService {
 	@Inject(PROJECTS_REPOSITORY) private readonly projectRepository: TProjectRepository
 	@Inject(PROJECTS_TRANSLATES_REPOSITORY)
 	private readonly projectTranslateRepository: TProjectTranslateRepository
+	@Inject(PROJECTS_DETAILS_REPOSITORY)
+	private readonly projectDetailRepository: TProjectDetailRepository
 
 	public async create(payload: ICreateProjectPayload) {
 		try {
@@ -38,15 +43,35 @@ export class ProjectService implements IProjectService {
 				lang: it.lang,
 				name: it.name,
 				projectId,
-				description: it.description,
+				sity: it.sity,
 			}))
 
-			await this.projectTranslateRepository.insert(toSave)
+			const test = await this.projectTranslateRepository.save(toSave)
+
+			for await (let it of test) {
+				const data = find(translates, { lang: it.lang })
+				await this.saveDetail(it.id, true, data.info)
+			}
+
 			return toSave
 		} catch (error) {
 			console.log('translate project error:', error)
 			throw new Error('error')
 		}
+	}
+
+	private async saveDetail(projectTranslateId: number, clearPrevios = true, data: any) {
+		console.log('data:', data)
+		if (clearPrevios) await this.projectDetailRepository.delete({ projectTranslateId })
+
+		const toSave = data.map(it => ({
+			title: it.title,
+			description: it.description,
+			projectTranslateId,
+		}))
+
+		await this.projectDetailRepository.insert(toSave)
+		return
 	}
 
 	public async update(id: number, payload: ICreateProjectPayload) {

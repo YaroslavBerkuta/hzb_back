@@ -3,6 +3,7 @@ import { Lang } from 'src/shared/enums'
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm'
 import { Project } from './projects.entity'
 import { IPojectTranslate } from '../typing'
+import { ProjectDetail } from './project-detail.entity'
 
 @Entity('projectTranslates')
 export class ProjectTranslate extends BaseEntity implements IPojectTranslate {
@@ -12,8 +13,8 @@ export class ProjectTranslate extends BaseEntity implements IPojectTranslate {
 	@Column()
 	name: string
 
-	@Column()
-	description: string
+	@Column({ nullable: true })
+	sity: string
 
 	@Column()
 	projectId: number
@@ -21,4 +22,7 @@ export class ProjectTranslate extends BaseEntity implements IPojectTranslate {
 	@ManyToOne(() => Project, p => p.translations, { onDelete: 'CASCADE' })
 	@JoinColumn({ name: 'projectId' })
 	project?: Project
+
+	@OneToMany(() => ProjectDetail, pd => pd.projectTranslate)
+	info?: ProjectDetail[]
 }

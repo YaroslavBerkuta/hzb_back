@@ -27,4 +27,9 @@ export class AdminProjectsController {
 	update(@Param('id') id: number, @Body() dto: any) {
 		return this.projectsService.update(id, dto)
 	}
+
+	@Delete('/production/:id')
+	removeProduction(@Param('id') id: number) {
+		return this.projectsService.removeProduction(id)
+	}
 }

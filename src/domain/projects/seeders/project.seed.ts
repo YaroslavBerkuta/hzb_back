@@ -15,12 +15,12 @@ export class ProjectSeed extends Seeder {
 					{
 						lang: Lang.en,
 						name: 'Project 1',
-						description: 'Project 1 descriprion',
+						sity: 'Project 1 descriprion',
 					},
 					{
 						lang: Lang.ua,
 						name: 'Проект 1',
-						description: 'Проект 1 опис',
+						sity: 'Проект 1 опис',
 					},
 				],
 			},
@@ -29,12 +29,12 @@ export class ProjectSeed extends Seeder {
 					{
 						lang: Lang.en,
 						name: 'Project 2',
-						description: 'Project 2 descriprion',
+						sity: 'Project 2 descriprion',
 					},
 					{
 						lang: Lang.ua,
 						name: 'Проект 2',
-						description: 'Проект 2 опис',
+						sity: 'Проект 2 опис',
 					},
 				],
 			},
@@ -43,12 +43,12 @@ export class ProjectSeed extends Seeder {
 					{
 						lang: Lang.en,
 						name: 'Project 3',
-						description: 'Project 3 descriprion',
+						sity: 'Project 3 descriprion',
 					},
 					{
 						lang: Lang.ua,
 						name: 'Проект 3',
-						description: 'Проект 3 опис',
+						sity: 'Проект 3 опис',
 					},
 				],
 			},
@@ -56,6 +56,7 @@ export class ProjectSeed extends Seeder {
 		try {
 			for (let item of mock) {
 				await this.projectService.create({
+					years: '2012-2018',
 					translations: item.translations,
 				})
 			}
