@@ -14,6 +14,7 @@ export class PublicProjectsService {
 			const query = this.projectRepository
 				.createQueryBuilder('it')
 				.leftJoinAndSelect('it.translations', 'translations')
+				.leftJoinAndSelect('translations.info', 'info')
 				.orderBy('it.createdAt', 'DESC')
 
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
