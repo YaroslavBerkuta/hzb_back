@@ -61,7 +61,6 @@ export class ProjectService implements IProjectService {
 	}
 
 	private async saveDetail(projectTranslateId: number, clearPrevios = true, data: any) {
-		console.log('data:', data)
 		if (clearPrevios) await this.projectDetailRepository.delete({ projectTranslateId })
 
 		const toSave = data.map(it => ({
@@ -76,6 +75,7 @@ export class ProjectService implements IProjectService {
 
 	public async update(id: number, payload: ICreateProjectPayload) {
 		try {
+			await this.projectRepository.update(id, { years: payload.years })
 			await this.putTranslations(id, payload.translations, true)
 		} catch (error) {
 			console.log('project error:', error)
