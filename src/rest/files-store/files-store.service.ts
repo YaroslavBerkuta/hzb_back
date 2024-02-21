@@ -112,6 +112,18 @@ export class FilesStoreService {
 				payload.parentTable = 'productsTable'
 				break
 			}
+			case 'categoryCover': {
+				payload.parentTable = 'categoryCover'
+				break
+			}
+			case 'categoryPrice': {
+				payload.parentTable = 'categoryPrice'
+				break
+			}
+			case 'categoryCatalog': {
+				payload.parentTable = 'categoryCatalog'
+				break
+			}
 		}
 		if (payload.parentTable) {
 			await this.galleryService.store(payload)

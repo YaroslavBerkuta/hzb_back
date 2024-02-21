@@ -197,6 +197,7 @@ export class FileStorageService implements FilesStorage.IFilesStorageService {
 	}
 
 	async getPresignedUrlForPutObject(folderPath: string = 'images', filename: string) {
+		console.log('replace:', filename)
 		const folder = `${folderPath}/${new Date().getFullYear()}/${new Date().getMonth()}`
 		const fileName = `${new Date().getTime()}.${filename.replace(/ /g, '_')}`
 		const presignedUrl = await this.minioClient.presignedPutObject(

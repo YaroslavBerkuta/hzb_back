@@ -2,6 +2,7 @@ import {
 	AdminAccountModule,
 	AdminAuthModule,
 	AdminAwardsModule,
+	AdminCategoryModule,
 	AdminDistributorsModule,
 	AdminLabolatoryModule,
 	AdminNewsModule,
@@ -51,4 +52,5 @@ export const REST_MODULES = () => [
 	AdminLabolatoryModule.forRoot(),
 	AdminPartnerModule.forRoot(),
 	AdminProductsModule.forRoot(),
+	AdminCategoryModule.forRoot(),
 ]

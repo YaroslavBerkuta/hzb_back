@@ -9,3 +9,4 @@ export * from './quality/quality.module'
 export * from './labolatory/labolatory.module'
 export * from './partner/partner.module'
 export * from './productions/productions.module'
+export * from "./categories/categories.module"

@@ -23,7 +23,7 @@ export class CategoriesModule {
 	static forRoot(): DynamicModule {
 		return {
 			module: CategoriesModule,
-			providers: [...this.getProviders(), CatgorySeed],
+			providers: [...this.getProviders()],
 			imports: this.imports(),
 		}
 	}

@@ -12,7 +12,7 @@ export class CategoryTranslate extends BaseEntity implements ICategoryTranslate 
 	@Column()
 	name: string
 
-	@Column()
+	@Column({ nullable: true })
 	description: string
 
 	@Column()

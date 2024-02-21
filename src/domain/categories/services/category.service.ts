@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common'
+import { BadRequestException, Inject, Injectable } from '@nestjs/common'
 import {
 	CATEGORY_REPOSITORY,
 	CATEGORY_TRANSLATES_REPOSITORY,
@@ -18,20 +18,14 @@ export class CategoryService implements ICategoryServices {
 
 	async create(payload: ICreateCategoryPayload): Promise<ICategory> {
 		try {
-			const category = await this.categoryRepository.save(payload)
-			await this.putTranslations(category.id, payload.translations, false)
+			const exist = await this.categoryRepository.findOne({ where: { key: payload.key } })
 
-			if (payload.subCategory.length > 0) {
-				for await (let it of payload.subCategory) {
-					const sub = await this.categoryRepository.save({
-						parentId: category.id,
-						type: CategoryType.SubCategory,
-						key: it.key,
-					})
-					await this.putTranslations(sub.id, it.translations, false)
-				}
+			if (exist) {
+				throw new BadRequestException('Категорія з таким ключем вже існує')
 			}
 
+			const category = await this.categoryRepository.save(payload)
+			await this.putTranslations(category.id, payload.translations, false)
 			return category
 		} catch (error) {
 			console.log('create category error:', error)

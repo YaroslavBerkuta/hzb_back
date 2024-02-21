@@ -1,16 +1,16 @@
 import { DynamicModule, Module } from '@nestjs/common'
 import { CategoriesModule } from 'src/domain/categories/categories.module'
-import { PublicCategoriesController } from './categories.controller'
-import { PublicCategoriesService } from './categories.service'
 import { GalleryModule } from 'src/domain/galleries/gallery.module'
+import { AdminCategoryController } from './categories.controller'
+import { AdminCategoryService } from './categories.service'
 
 @Module({})
-export class PublicCategoriesModule {
+export class AdminCategoryModule {
 	static forRoot(): DynamicModule {
 		return {
-			module: PublicCategoriesModule,
-			providers: [PublicCategoriesService],
-			controllers: [PublicCategoriesController],
+			module: AdminCategoryModule,
+			controllers: [AdminCategoryController],
+			providers: [AdminCategoryService],
 			imports: [CategoriesModule.forFeature(), GalleryModule.forFeature()],
 		}
 	}

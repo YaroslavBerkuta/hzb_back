@@ -15,8 +15,5 @@ interface ICategoryPayload {
 export interface ICreateCategoryPayload {
 	key: string
 	translations?: ICategoryPayload[]
-	subCategory?: {
-		key: string
-		translations?: ICategoryPayload[]
-	}[]
+	parentId?: number
 }
