@@ -9,4 +9,9 @@ export class PublicCategoriesController {
 	getSubcategory(@Param('key') key: string) {
 		return this.categoriesService.getSubCategoies(key)
 	}
+
+	@Get('/catalog/:key')
+	getCatalog(@Param('key') key: string) {
+		return this.categoriesService.getCatalog(key)
+	}
 }

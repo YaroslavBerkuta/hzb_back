@@ -13,7 +13,6 @@ export class PublicProductsService {
 	@Inject(CATEGORY_REPOSITORY) private readonly categoryRepository: TCategory
 
 	async getList(pagination: IPagination, dto: any) {
-		console.log('IPagination:', pagination)
 		try {
 			const category = await this.categoryRepository.findOne({
 				where: { key: dto.categoryKey },
