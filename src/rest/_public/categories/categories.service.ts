@@ -45,4 +45,21 @@ export class PublicCategoriesService {
 			console.log('error:', error)
 		}
 	}
+	async getCatalog(key: string) {
+		const category = await this.categoriesRepository.findOne({ where: { key } })
+		
+			const price = await this.galleryService.get({
+				parentId: category.id,
+				parentTable:'categoryPrice'
+			})
+
+			const catalog = (await this.galleryService.get({
+				parentId: category.id,
+				parentTable:'categoryCatalog'
+			}))
+		return {
+				price:price[0] || null,
+				catalog:catalog[0]||null
+			}
+	}
 }
