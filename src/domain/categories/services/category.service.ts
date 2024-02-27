@@ -35,6 +35,10 @@ export class CategoryService implements ICategoryServices {
 
 	async update(id: number, payload: any): Promise<void> {
 		try {
+			await this.categoryRepository.update(id, {
+				key: payload.key,
+				parentId: payload.parentId,
+			})
 			await this.putTranslations(id, payload.translations, true)
 		} catch (error) {
 			console.log('update category error:', error)
