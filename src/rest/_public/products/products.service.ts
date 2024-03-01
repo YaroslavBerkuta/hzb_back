@@ -5,6 +5,7 @@ import { IGalleryService } from 'src/domain/galleries/interface'
 import { TProductionRepository } from 'src/domain/productions/typing'
 import { PRODUCTS_REPOSITORY } from 'src/domain/products/typing/consts'
 import { IPagination, paginateAndGetMany } from 'src/shared'
+import { Lang } from 'src/shared/enums'
 import { Brackets } from 'typeorm'
 
 @Injectable()
@@ -33,7 +34,13 @@ export class PublicProductsService {
 				})
 
 			if (pagination.sort) {
-				query.orderBy('translations.name', pagination.sort)
+				query
+					.andWhere(
+						new Brackets(sub => {
+							sub.where('translations.lang = :lang', { lang: Lang.ua })
+						}),
+					)
+					.orderBy('translations.name', pagination.sort)
 			}
 
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
