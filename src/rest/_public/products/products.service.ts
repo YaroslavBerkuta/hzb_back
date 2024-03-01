@@ -5,6 +5,7 @@ import { IGalleryService } from 'src/domain/galleries/interface'
 import { TProductionRepository } from 'src/domain/productions/typing'
 import { PRODUCTS_REPOSITORY } from 'src/domain/products/typing/consts'
 import { IPagination, paginateAndGetMany } from 'src/shared'
+import { Brackets } from 'typeorm'
 
 @Injectable()
 export class PublicProductsService {
@@ -13,6 +14,7 @@ export class PublicProductsService {
 	@Inject(CATEGORY_REPOSITORY) private readonly categoryRepository: TCategory
 
 	async getList(pagination: IPagination, dto: any) {
+		console.log('dto:', dto)
 		try {
 			const category = await this.categoryRepository.findOne({
 				where: { key: dto.categoryKey },
@@ -29,6 +31,10 @@ export class PublicProductsService {
 				.orWhere('category.parentId = :categoryId', {
 					categoryId: category.id,
 				})
+
+			if (pagination.sort) {
+				query.orderBy('translations.name', pagination.sort)
+			}
 
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 

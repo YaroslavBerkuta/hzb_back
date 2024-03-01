@@ -15,19 +15,20 @@ export class PublicNewsService {
 			.leftJoinAndSelect('it.translations', 'translations')
 			.orderBy('it.createdAt', 'DESC')
 
-		const { items, count } = await paginateAndGetMany(query, pagination, 'it')
+		const { items } = await paginateAndGetMany(query, pagination, 'it')
+
 		await Promise.all(
 			items.map(async (it, index, arr: any) => {
 				arr[index].cover =
 					(await this.galleryService.get({
 						parentId: it.id,
 						parentTable: 'news',
-					})) || ''
+					})) || []
 			}),
 		)
+
 		return {
 			items,
-			count,
 		}
 	}
 }

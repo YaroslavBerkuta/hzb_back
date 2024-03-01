@@ -1,8 +1,8 @@
 export interface IPagination {
-  limit: number;
-  page?: number;
-  sortField?: string;
-  sort?: string;
-  skip?: number;
-  searchString?: string;
+	limit: number
+	page?: number
+	sortField?: string
+	sort?: 'ASC' | 'DESC'
+	skip?: number
+	searchString?: string
 }
