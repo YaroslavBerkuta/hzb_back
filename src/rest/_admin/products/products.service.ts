@@ -36,6 +36,8 @@ export class AdminProductsService {
 			const query = this.productRepository
 				.createQueryBuilder('it')
 				.leftJoinAndSelect('it.translations', 'translations')
+				.leftJoinAndSelect('it.productCategory', 'productCategory')
+				.leftJoinAndSelect('productCategory.category', 'category')
 
 			const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 
