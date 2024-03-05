@@ -4,7 +4,7 @@ import { GALLERY_SERVICE } from 'src/domain/galleries/consts'
 import { IGalleryService } from 'src/domain/galleries/interface'
 import { TProductionRepository } from 'src/domain/productions/typing'
 import { PRODUCTS_REPOSITORY } from 'src/domain/products/typing/consts'
-import { IPagination, paginateAndGetMany } from 'src/shared'
+import { IPagination, paginateAndGetMany, prepareSearchString } from 'src/shared'
 import { Lang } from 'src/shared/enums'
 import { Brackets } from 'typeorm'
 
@@ -15,11 +15,12 @@ export class PublicProductsService {
 	@Inject(CATEGORY_REPOSITORY) private readonly categoryRepository: TCategory
 
 	async getList(pagination: IPagination, dto: any) {
-		console.log('dto:', dto)
 		try {
 			const category = await this.categoryRepository.findOne({
 				where: { key: dto.categoryKey },
 			})
+
+			
 
 			const query = this.productRepository
 				.createQueryBuilder('it')
@@ -31,6 +32,9 @@ export class PublicProductsService {
 				})
 				.orWhere('category.parentId = :categoryId', {
 					categoryId: category.id,
+				})
+			.andWhere('translations.name ILIKE :search', {
+					search: prepareSearchString(pagination?.searchString || ''),
 				})
 
 			if (pagination.sort) {
