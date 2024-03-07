@@ -3,6 +3,7 @@ import { CATEGORY_ENTITIES } from 'src/domain/categories/entities'
 import { CLIENTS_ENTITIES } from 'src/domain/clients/entities'
 import { DISTRIBUTIONS_ENTITY } from 'src/domain/distributors/entities'
 import { GALLERIES_ENTITIES } from 'src/domain/galleries/entities'
+import { INSTAGRAM_ENTITIES } from 'src/domain/instagram/entities'
 import { LABOLATORY_ENTITIES } from 'src/domain/labolatory/entities'
 import { NEWS_ETITIES } from 'src/domain/news/entities'
 import { PARTNER_ENTITY } from 'src/domain/partner/entities'
@@ -28,4 +29,5 @@ export const ENTITIES = [
 	...PARTNER_ENTITY,
 	...CATEGORY_ENTITIES,
 	...PRODUCTS_ENTITY,
+	...INSTAGRAM_ENTITIES
 ]

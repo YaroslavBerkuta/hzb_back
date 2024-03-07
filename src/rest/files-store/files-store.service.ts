@@ -124,6 +124,10 @@ export class FilesStoreService {
 				payload.parentTable = 'categoryCatalog'
 				break
 			}
+			case 'instagram': {
+				payload.parentTable = 'instagram'
+				break
+			}
 		}
 		if (payload.parentTable) {
 			await this.galleryService.store(payload)
