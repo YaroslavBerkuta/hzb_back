@@ -10,3 +10,4 @@ export * from './labolatory/labolatory.module'
 export * from './partner/partner.module'
 export * from './productions/productions.module'
 export * from "./categories/categories.module"
+export * from "./feedbacks/feedbacks.module"

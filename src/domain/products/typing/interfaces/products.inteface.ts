@@ -4,6 +4,7 @@ import { Repository } from 'typeorm'
 
 export interface IProduct {
 	id: number
+	order: number
 	translations: IProductTranslate[]
 	productCategory?: IProductCategory[]
 	createdAt?: string

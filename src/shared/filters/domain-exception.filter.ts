@@ -31,7 +31,8 @@ export class DomainExceptionsFilter implements ExceptionFilter {
 			result.json = {}
 		}
 
-		this.logger.error(`${ctx.getRequest().url} Catch exeption, status: ${result.status}`)
+		this.logger.error(`${ctx.getRequest().url} Catch exception, status: ${result.status}`)
+		this.logger.debug(`${result.json}`)
 
 		// httpAdapter.reply(ctx.getResponse(), result.json, result.status)
 		return response.status(result.status).json(result.json)

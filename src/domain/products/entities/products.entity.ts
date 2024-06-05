@@ -6,6 +6,9 @@ import { IProduct } from '../typing'
 
 @Entity('products')
 export class Product extends BaseEntity implements IProduct {
+	@Column({ nullable: true })
+	order: number
+
 	@OneToMany(() => ProductTranslate, pt => pt.product)
 	translations: ProductTranslate[]
 
