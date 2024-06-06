@@ -16,18 +16,17 @@ export class FeedbacksService implements IFeedbacksService {
 		return feedback
 	}
 
-	public async update(id: number, payload: ICreateFeedbacksPayload) {
+	public async update(id: number, payload: Partial<ICreateFeedbacksPayload>) {
 		const feedback = await this.feedbacksRepository.findOne({ where: { id } })
 
 		if (!feedback) {
-			console.error(`Feedback with id ${id} not found`)
 			throw new NotFoundException('feedback not found')
 		}
 
 		if (payload) {
 			try {
 				await this.feedbacksRepository.update(id, payload)
-				return feedback
+				return
 			} catch (error) {
 				throw error;
 			}
