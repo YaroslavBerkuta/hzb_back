@@ -19,15 +19,6 @@ export class AdminFeedbacksService {
 
 		const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 
-		// await Promise.all(
-		// 	items.map(async (it, index, arr: any) => {
-		// 		arr[index].cover =
-		// 			(await this.galleryService.get({
-		// 				parentId: it.id,
-		// 				parentTable: 'feedbacks',
-		// 			})) || ''
-		// 	}),
-		// )
 		return {
 			items,
 			count,

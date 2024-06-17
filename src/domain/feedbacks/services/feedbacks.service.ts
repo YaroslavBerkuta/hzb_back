@@ -5,6 +5,7 @@ import {
 	ICreateFeedbacksPayload,
 	TFeedbacksRepository,
 } from '../typing'
+import _ from 'lodash'
 
 @Injectable()
 export class FeedbacksService implements IFeedbacksService {
@@ -12,24 +13,18 @@ export class FeedbacksService implements IFeedbacksService {
 
 	public async create(payload: ICreateFeedbacksPayload) {
 		const feedback = await this.feedbacksRepository.save(payload)
-		console.log('Feedback created:', feedback)
+		
 		return feedback
 	}
 
 	public async update(id: number, payload: Partial<ICreateFeedbacksPayload>) {
-		const feedback = await this.feedbacksRepository.findOne({ where: { id } })
+		let feedback = await this.feedbacksRepository.findOne({ where: { id } })
 
 		if (!feedback) {
 			throw new NotFoundException('feedback not found')
 		}
 
-		if (payload) {
-			try {
-				await this.feedbacksRepository.update(id, payload)
-				return
-			} catch (error) {
-				throw error;
-			}
-		}
+		feedback = this.feedbacksRepository.merge(feedback, _.omitBy(_.omit(payload), _.isNil))
+		await this.feedbacksRepository.update(id, feedback)
 	}
 }
