@@ -5,7 +5,7 @@ import {
 	ICreateFeedbacksPayload,
 	TFeedbacksRepository,
 } from '../typing'
-import _ from 'lodash'
+import _, { isNil, omit, omitBy } from 'lodash'
 
 @Injectable()
 export class FeedbacksService implements IFeedbacksService {
@@ -24,7 +24,7 @@ export class FeedbacksService implements IFeedbacksService {
 			throw new NotFoundException('feedback not found')
 		}
 
-		feedback = this.feedbacksRepository.merge(feedback, _.omitBy(_.omit(payload), _.isNil))
+		feedback = this.feedbacksRepository.merge(feedback, omitBy(omit(payload), isNil))
 		await this.feedbacksRepository.update(id, feedback)
 	}
 }
