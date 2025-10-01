@@ -1,3 +1,7 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+
 const testEnv = {
 	AUTO_SEED_ENABLED: true,
 }
