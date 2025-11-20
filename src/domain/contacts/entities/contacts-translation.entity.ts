@@ -28,10 +28,10 @@ export class ContactsDepartmentTranslation extends BaseEntity implements IContac
   @Column()
   name: string
 
-  @Column()
+  @Column('simple-array', { nullable: true })
   emails?: string[]
 
-  @Column()
+  @Column('simple-array', { nullable: true })
   phones?: string[]
 
   @Column()
@@ -50,10 +50,10 @@ export class ContactsSubdepartmentTranslation extends BaseEntity implements ICon
   @Column()
   name: string
 
-  @Column()
+  @Column('simple-array', { nullable: true })
   emails?: string[]
 
-  @Column()
+  @Column('simple-array', { nullable: true })
   phones?: string[]
 
   @Column()
