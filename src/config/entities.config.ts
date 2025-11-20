@@ -14,6 +14,7 @@ import { QUALITY_ENTITIES } from 'src/domain/quality/entities'
 import { SESSIONS_ENTITIES } from 'src/domain/sessions/entities'
 import { USERS_ENTITIES } from 'src/domain/users/entities'
 import { FEEDBACKS_ENTITY } from 'src/domain/feedbacks/entities'
+import { CONTACTS_ENTITY } from 'src/domain/contacts/entities'
 
 export const ENTITIES = [
 	...USERS_ENTITIES,
@@ -31,5 +32,6 @@ export const ENTITIES = [
 	...CATEGORY_ENTITIES,
 	...PRODUCTS_ENTITY,
 	...INSTAGRAM_ENTITIES,
-	...FEEDBACKS_ENTITY
+	...FEEDBACKS_ENTITY,
+	...CONTACTS_ENTITY,
 ]

@@ -14,6 +14,7 @@ import { PartnerModule } from './partner/partner.module'
 import { CategoriesModule } from './categories/categories.module'
 import { ProductsModule } from './products/products.module'
 import { InstagramModule } from './instagram/instagram.module'
+import { ContactsModule } from './contacts/contacts.module'
 
 export const DOMAIN_MODULES = () => [
 	SessionsModule.forRoot(),
@@ -32,4 +33,5 @@ export const DOMAIN_MODULES = () => [
 	CategoriesModule.forRoot(),
 	ProductsModule.forRoot(),
 	InstagramModule.forRoot(),
+	ContactsModule.forRoot(),
 ]

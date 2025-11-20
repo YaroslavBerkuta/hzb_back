@@ -10,6 +10,7 @@ import {
 	AdminProjectsModule,
 	AdminQualityModule,
 	AdminFeedbacksModule,
+	AdminContactsModule,
 } from './_admin'
 import {
 	PublicAwardsModule,
@@ -24,6 +25,7 @@ import {
 	PublicProjectsModule,
 	PublicQualityModule,
 	PublicFeedbacksModule,
+	PublicContactsModule,
 } from './_public'
 import { FilesStoreModule } from './files-store/files-store.module'
 import { AdminProductionsModule } from './_admin/productions/productions.module'
@@ -43,6 +45,7 @@ export const REST_MODULES = () => [
 	PublicCategoriesModule.forRoot(),
 	PublicProductsModule.forRoot(),
 	PublicFeedbacksModule.forRoot(),
+	PublicContactsModule.forRoot(),
 
 	AdminAuthModule.forRoot(),
 	AdminAccountModule.forRoot(),
@@ -57,4 +60,5 @@ export const REST_MODULES = () => [
 	AdminProductsModule.forRoot(),
 	AdminCategoryModule.forRoot(),
 	AdminFeedbacksModule.forRoot(),
+	AdminContactsModule.forRoot(),
 ]

@@ -11,3 +11,4 @@ export * from './partner/partner.module'
 export * from './productions/productions.module'
 export * from "./categories/categories.module"
 export * from "./feedbacks/feedbacks.module"
+export * from "./contacts/contacts.module"

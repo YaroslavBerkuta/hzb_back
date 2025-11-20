@@ -8,7 +8,7 @@ import { IDistributions } from '../typing/interfaces'
 export class Distributor extends BaseEntity implements IDistributions {
 	@Column({ type: 'varchar', enum: Regions, unique: true })
 	key: Regions
-
+ 
 	@OneToMany(() => DistributorTranslate, dt => dt.distributor)
 	translations?: DistributorTranslate[]
 }
