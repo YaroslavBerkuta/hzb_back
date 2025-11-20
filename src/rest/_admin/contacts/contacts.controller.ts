@@ -1,8 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'
 import { AdminContactsService } from './contacts.service'
-import { ApiTags } from '@nestjs/swagger'
 
-@ApiTags('ADMIN | CONTACTS')
 @Controller('admin/contacts')
 export class AdminContactsController {
   constructor(private readonly contactsService: AdminContactsService) {}

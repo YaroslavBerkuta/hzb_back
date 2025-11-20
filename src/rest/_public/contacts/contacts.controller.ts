@@ -2,8 +2,7 @@ import { Controller, Get } from '@nestjs/common'
 import { PublicContactsService } from './contacts.service'
 import { ApiTags } from '@nestjs/swagger'
 
-@ApiTags('PUBLIC | CONTACTS')
-@Controller('contacts')
+@Controller('public/contacts')
 export class PublicContactsController {
   constructor(private readonly contactsService: PublicContactsService) {}
 
