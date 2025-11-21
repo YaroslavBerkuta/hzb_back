@@ -9,7 +9,7 @@ export class ContactsTab extends BaseEntity implements IContactsTab {
   @Column()
   position: number
 
-  @OneToMany(() => ContactsTabTranslation, ctt => ctt.tabId)
+  @OneToMany(() => ContactsTabTranslation, ctt => ctt.tab)
   translations?: ContactsTabTranslation[]
 
   @OneToMany(() => ContactsDepartment, dept => dept.tabId)
@@ -28,7 +28,7 @@ export class ContactsDepartment extends BaseEntity implements IContactsDepartmen
   @JoinColumn({ name: 'tabId' })
   tab: ContactsTab
 
-  @OneToMany(() => ContactsDepartmentTranslation, cdt => cdt.departmentId)
+  @OneToMany(() => ContactsDepartmentTranslation, cdt => cdt.department)
   translations?: ContactsDepartmentTranslation[]
 
   @OneToMany(() => ContactsSubdepartment, sd => sd.departmentId)
@@ -47,6 +47,6 @@ export class ContactsSubdepartment extends BaseEntity implements IContactsSubdep
   @JoinColumn({ name: 'departmentId' })
   department: ContactsDepartment
 
-  @OneToMany(() => ContactsSubdepartmentTranslation, cst => cst.subdepartmentId)
+  @OneToMany(() => ContactsSubdepartmentTranslation, cst => cst.subdepartment)
   translations?: IContactsSubdepartmentTranslation[]
 }
