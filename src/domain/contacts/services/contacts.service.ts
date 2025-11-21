@@ -41,8 +41,10 @@ export class ContactsService implements IContactsService {
   // Tabs
   public async createTab(payload: ICreateContactsTabPayload) {
     try {
-      const tab = await this.tabRepository.save({ position: payload.position || 0 })
-      await this.putTabTranslations(tab.id, payload.translations)
+      const tab = this.tabRepository.create({ position: payload.position || 0 })
+      const saved = await this.tabRepository.save(tab)
+      await this.putTabTranslations(saved.id, payload.translations, false)
+      return saved
     } catch (error) {
       console.log('error:', error)
       throw new Error(error)
@@ -72,7 +74,8 @@ export class ContactsService implements IContactsService {
   public async updateTab(id: number, payload: ICreateContactsTabPayload) {
     try {
       await this.tabRepository.update(id, { position: payload.position })
-      await this.putTabTranslations(id, payload.translations)
+      await this.putTabTranslations(id, payload.translations, true)
+      return await this.tabRepository.findOne({ where: { id } })
     } catch (error) {
       console.log('error:', error)
       throw new Error(error)
@@ -91,11 +94,19 @@ export class ContactsService implements IContactsService {
   private async putTabTranslations(
     tabId: number,
     translates: ICreateContactsTabPayload['translations'],
+    clearPrevious = true,
   ) {
     try {
+      if (!Array.isArray(translates) || translates.length === 0) return []
+
+      if (clearPrevious) {
+        await this.tabTranslationRepository.delete({ tabId })
+      }
+
       const toSave = translates.map(it => ({
         lang: it.lang,
         name: it.name,
+        tabId,
       }))
 
       await this.tabTranslationRepository.insert(toSave)
@@ -109,11 +120,13 @@ export class ContactsService implements IContactsService {
   // Departments
   public async createDepartment(payload: ICreateContactsDepartmentPayload) {
     try {
-      const department = await this.departmentRepository.save({
+      const department = this.departmentRepository.create({
         position: payload.position || 0,
         tab: { id: payload.tabId },
       })
-      await this.putDepartmentTranslations(department.id, payload.translations)
+      const saved = await this.departmentRepository.save(department)
+      await this.putDepartmentTranslations(saved.id, payload.translations, false)
+      return saved
     } catch (error) {
       console.log('error:', error)
       throw new Error(error)
@@ -141,7 +154,8 @@ export class ContactsService implements IContactsService {
   public async updateDepartment(id: number, payload: ICreateContactsDepartmentPayload) {
     try {
       await this.departmentRepository.update(id, { position: payload.position, tab: { id: payload.tabId } })
-      await this.putDepartmentTranslations(id, payload.translations)
+      await this.putDepartmentTranslations(id, payload.translations, true)
+      return await this.departmentRepository.findOne({ where: { id } })
     } catch (error) {
       console.log('error:', error)
       throw new Error(error)
@@ -160,13 +174,21 @@ export class ContactsService implements IContactsService {
   private async putDepartmentTranslations(
     departmentId: number,
     translates: ICreateContactsDepartmentPayload['translations'],
+    clearPrevious = true,
   ) {
     try {
+      if (!Array.isArray(translates) || translates.length === 0) return []
+
+      if (clearPrevious) {
+        await this.departmentTranslationRepository.delete({ departmentId })
+      }
+
       const toSave = translates.map(it => ({
         lang: it.lang,
         name: it.name,
         emails: it.emails,
         phones: it.phones,
+        departmentId,
       }))
 
       await this.departmentTranslationRepository.insert(toSave)
@@ -180,11 +202,13 @@ export class ContactsService implements IContactsService {
   // Subdepartments
   public async createSubdepartment(payload: ICreateContactsSubdepartmentPayload) {
     try {
-      const subdepartment = await this.subdepartmentRepository.save({
+      const subdepartment = this.subdepartmentRepository.create({
         position: payload.position || 0,
         department: { id: payload.departmentId },
       })
-      await this.putSubdepartmentTranslations(subdepartment.id, payload.translations)
+      const saved = await this.subdepartmentRepository.save(subdepartment)
+      await this.putSubdepartmentTranslations(saved.id, payload.translations, false)
+      return saved
     } catch (error) {
       console.log('error:', error)
       throw new Error(error)
@@ -209,7 +233,8 @@ export class ContactsService implements IContactsService {
   public async updateSubdepartment(id: number, payload: ICreateContactsSubdepartmentPayload) {
     try {
       await this.subdepartmentRepository.update(id, { position: payload.position, department: { id: payload.departmentId } })
-      await this.putSubdepartmentTranslations(id, payload.translations)
+      await this.putSubdepartmentTranslations(id, payload.translations, true)
+      return await this.subdepartmentRepository.findOne({ where: { id } })
     } catch (error) {
       console.log('error:', error)
       throw new Error(error)
@@ -228,13 +253,21 @@ export class ContactsService implements IContactsService {
   private async putSubdepartmentTranslations(
     subdepartmentId: number,
     translates: ICreateContactsSubdepartmentPayload['translations'],
+    clearPrevious = true,
   ) {
     try {
+      if (!Array.isArray(translates) || translates.length === 0) return []
+
+      if (clearPrevious) {
+        await this.subdepartmentTranslationRepository.delete({ subdepartmentId })
+      }
+
       const toSave = translates.map(it => ({
         lang: it.lang,
         name: it.name,
         emails: it.emails,
         phones: it.phones,
+        subdepartmentId,
       }))
 
       await this.subdepartmentTranslationRepository.insert(toSave)

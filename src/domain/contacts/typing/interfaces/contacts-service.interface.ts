@@ -1,18 +1,21 @@
 import { Lang } from '../../../../shared/enums/lang.enum'
+import { ContactsDepartment, ContactsSubdepartment, ContactsTab } from '../../entities'
 import { IContactsTab, IContactsDepartment, IContactsSubdepartment } from './contacts.interface'
 
 export interface IContactsService {
-  createTab(payload: ICreateContactsTabPayload): Promise<void>
-  createDepartment(payload: ICreateContactsDepartmentPayload): Promise<void>
-  createSubdepartment(payload: ICreateContactsSubdepartmentPayload): Promise<void>
+  createTab(payload: ICreateContactsTabPayload): Promise<ContactsTab>
   getTabs(): Promise<IContactsTab[]>
-  getDepartmentsByTabId(tabId: number): Promise<IContactsDepartment[]>
-  getSubdepartmentsByDepartmentId(departmentId: number): Promise<IContactsSubdepartment[]>
-  updateTab(id: number, payload: ICreateContactsTabPayload): Promise<void>
-  updateDepartment(id: number, payload: ICreateContactsDepartmentPayload): Promise<void>
-  deleteDepartment(id: number): Promise<void>
+  updateTab(id: number, payload: ICreateContactsTabPayload): Promise<ContactsTab | null>
   deleteTab(id: number): Promise<void>
-  updateSubdepartment(id: number, payload: ICreateContactsSubdepartmentPayload): Promise<void>
+
+  createDepartment(payload: ICreateContactsDepartmentPayload): Promise<ContactsDepartment>
+  getDepartmentsByTabId(tabId: number): Promise<IContactsDepartment[]>
+  updateDepartment(id: number, payload: ICreateContactsDepartmentPayload): Promise<ContactsDepartment | null>
+  deleteDepartment(id: number): Promise<void>
+  
+  createSubdepartment(payload: ICreateContactsSubdepartmentPayload): Promise<ContactsSubdepartment>
+  getSubdepartmentsByDepartmentId(departmentId: number): Promise<IContactsSubdepartment[]>
+  updateSubdepartment(id: number, payload: ICreateContactsSubdepartmentPayload): Promise<ContactsSubdepartment | null>
   deleteSubdepartment(id: number): Promise<void>
 }
 
