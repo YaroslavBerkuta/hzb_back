@@ -15,8 +15,6 @@ export interface IContactsTabTranslation {
   lang: Lang
   name: string
 
-  tabId: number
-
   createdAt?: string
   updatedAt?: string
 }
@@ -38,8 +36,6 @@ export interface IContactsDepartmentTranslation {
   emails?: string[]
   phones?: string[]
 
-  departmentId: number
-
   createdAt?: string
   updatedAt?: string
 }
@@ -59,8 +55,6 @@ export interface IContactsSubdepartmentTranslation {
   name: string
   emails?: string[]
   phones?: string[]
-
-  subdepartmentId: number
 
   createdAt?: string
   updatedAt?: string

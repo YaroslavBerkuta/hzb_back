@@ -12,9 +12,6 @@ export class ContactsTabTranslation extends BaseEntity implements IContactsTabTr
   @Column()
   name: string
 
-  @Column()
-  tabId: number
-
   @ManyToOne(() => ContactsTab, tab => tab.translations, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'tabId' })
   tab: ContactsTab
@@ -34,9 +31,6 @@ export class ContactsDepartmentTranslation extends BaseEntity implements IContac
   @Column('simple-array', { nullable: true })
   phones?: string[]
 
-  @Column()
-  departmentId: number
-
   @ManyToOne(() => ContactsDepartment, dept => dept.translations, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'departmentId' })
   department: ContactsDepartment
@@ -55,9 +49,6 @@ export class ContactsSubdepartmentTranslation extends BaseEntity implements ICon
 
   @Column('simple-array', { nullable: true })
   phones?: string[]
-
-  @Column()
-  subdepartmentId: number
 
   @ManyToOne(() => ContactsSubdepartment, subdept => subdept.translations, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'subdepartmentId' })

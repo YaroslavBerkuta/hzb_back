@@ -35,7 +35,6 @@ export interface ICreateContactsDepartmentTranslatesPayload {
   name: string
   emails?: string[]
   phones?: string[]
-  subdepartmentIds?: number[]
 }
 
 export interface ICreateContactsSubdepartmentPayload {
