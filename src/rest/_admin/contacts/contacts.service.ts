@@ -1,11 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { CONTACTS_SERVICE, IContactsService } from 'src/domain/contacts/typing/consts'
+import { CONTACTS_SERVICE, CONTACTS_TAB_REPOSITORY, IContactsService, TContactsTabRepository } from 'src/domain/contacts/typing/consts'
+import { IPagination, paginateAndGetMany } from 'src/shared'
 
 @Injectable()
 export class AdminContactsService {
   constructor(
     @Inject(CONTACTS_SERVICE)
     private readonly contactsService: IContactsService,
+    @Inject(CONTACTS_TAB_REPOSITORY) private readonly contactsTabRepository: TContactsTabRepository
   ) {}
 
   // Tabs
@@ -13,8 +15,23 @@ export class AdminContactsService {
     return this.contactsService.createTab(payload)
   }
 
-  async getTabs() {
-    return this.contactsService.getTabs()
+  async getTabs(pagination: IPagination) {
+    const query = this.contactsTabRepository
+      .createQueryBuilder('it')
+      .leftJoinAndSelect('it.translations', 'translations')
+      .orderBy('it.createdAt', 'DESC')
+
+    const { items, count } = await paginateAndGetMany(query, pagination, 'it')
+
+    await Promise.all(
+      items.map(async (it, index, arr: any) => {
+        arr[index].translations = it.translations
+      }),
+    )
+    return {
+      items,
+      count,
+    }
   }
 
   async updateTab(id: number, payload: any) {
