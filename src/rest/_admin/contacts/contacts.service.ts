@@ -19,15 +19,16 @@ export class AdminContactsService {
     const query = this.contactsTabRepository
       .createQueryBuilder('it')
       .leftJoinAndSelect('it.translations', 'translations')
-      .orderBy('it.createdAt', 'DESC')
+      .leftJoinAndSelect('it.departments', 'departments')
+      .leftJoinAndSelect('departments.translations', 'departmentTranslations')
+      .leftJoinAndSelect('departments.subdepartments', 'subdepartments')
+      .leftJoinAndSelect('subdepartments.translations', 'subdepartmentTranslations')
+      .orderBy('it.position', 'ASC')
+      .addOrderBy('departments.position', 'ASC')
+      .addOrderBy('subdepartments.position', 'ASC')
 
     const { items, count } = await paginateAndGetMany(query, pagination, 'it')
 
-    await Promise.all(
-      items.map(async (it, index, arr: any) => {
-        arr[index].translations = it.translations
-      }),
-    )
     return {
       items,
       count,
