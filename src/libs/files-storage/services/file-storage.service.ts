@@ -197,6 +197,10 @@ export class FileStorageService implements FilesStorage.IFilesStorageService {
 	}
 
 	async getPresignedUrlForPutObject(folderPath: string = 'images', filename: string) {
+		if (!filename) {
+			throw new BadRequestException('filename is required')
+		}
+		
 		console.log('replace:', filename)
 		const folder = `${folderPath}/${new Date().getFullYear()}/${new Date().getMonth()}`
 		const fileName = `${new Date().getTime()}.${filename.replace(/ /g, '_')}`
